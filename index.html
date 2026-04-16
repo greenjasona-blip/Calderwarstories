@@ -32,7 +32,7 @@
       --font-mono:   'IBM Plex Mono', monospace;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
 
     body {
       background: var(--black);
@@ -44,7 +44,6 @@
       cursor: crosshair;
     }
 
-    /* ── NAV ─────────────────────────────────────────────── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -84,7 +83,6 @@
     }
     .nav-links a:hover { color: var(--green); }
 
-    /* ── HERO ────────────────────────────────────────────── */
     #hero {
       position: relative;
       height: 100vh;
@@ -105,7 +103,6 @@
       z-index: 1;
     }
 
-    /* Animated grain overlay */
     .hero-bg::after {
       content: '';
       position: absolute;
@@ -124,7 +121,6 @@
       75% { transform: translate(-1%, -3%); }
     }
 
-    /* Photo mosaic background */
     .hero-photos {
       position: absolute;
       inset: 0;
@@ -144,19 +140,13 @@
       background-image: url('img_convoy_sunset.jpg');
       filter: brightness(0.55) contrast(1.15) saturate(0.5);
     }
-    .hero-photos .hp:nth-child(2) {
-      background-image: url('img_sniper_wall.jpg');
-    }
+    .hero-photos .hp:nth-child(2) { background-image: url('img_sniper_wall.jpg'); }
     .hero-photos .hp:nth-child(3) {
       background-image: url('img_nvg_silhouettes.jpg');
       filter: brightness(0.5) saturate(0) contrast(1.3);
     }
-    .hero-photos .hp:nth-child(4) {
-      background-image: url('img_teamroom.jpg');
-    }
-    .hero-photos .hp:nth-child(5) {
-      background-image: url('img_mortar_sparks.jpg');
-    }
+    .hero-photos .hp:nth-child(4) { background-image: url('img_teamroom.jpg'); }
+    .hero-photos .hp:nth-child(5) { background-image: url('img_mortar_sparks.jpg'); }
 
     .hero-content {
       position: relative;
@@ -226,10 +216,7 @@
       text-decoration: none;
       transition: background 0.2s, transform 0.2s;
     }
-    .hero-cta:hover {
-      background: var(--offwhite);
-      transform: translateY(-2px);
-    }
+    .hero-cta:hover { background: var(--offwhite); transform: translateY(-2px); }
 
     .hero-cta-ghost {
       display: inline-block;
@@ -243,10 +230,7 @@
       text-decoration: none;
       transition: border-color 0.2s, color 0.2s;
     }
-    .hero-cta-ghost:hover {
-      border-color: var(--green);
-      color: var(--green);
-    }
+    .hero-cta-ghost:hover { border-color: var(--green); color: var(--green); }
 
     .hero-scroll {
       position: absolute;
@@ -278,11 +262,7 @@
       100% { transform: scaleY(1); opacity: 1; }
     }
 
-    /* ── REEL ────────────────────────────────────────────── */
-    #reel {
-      background: var(--black);
-      padding: 5rem 3rem;
-    }
+    #reel { background: var(--black); padding: 5rem 3rem; }
 
     .section-label {
       font-family: var(--font-mono);
@@ -332,7 +312,6 @@
       color: var(--smoke);
     }
 
-    /* ── SERIES ──────────────────────────────────────────── */
     #series {
       padding: 7rem 3rem;
       display: grid;
@@ -343,9 +322,7 @@
       margin: 0 auto;
     }
 
-    .series-photo {
-      position: relative;
-    }
+    .series-photo { position: relative; }
     .series-photo img {
       width: 100%;
       aspect-ratio: 3/4;
@@ -362,9 +339,7 @@
     }
     .series-photo-caption {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       padding: 2rem 1.5rem 1rem;
       background: linear-gradient(to top, rgba(8,8,8,0.9), transparent);
       font-family: var(--font-mono);
@@ -373,8 +348,6 @@
       color: var(--smoke);
       text-transform: uppercase;
     }
-
-    .series-text {}
 
     .section-heading {
       font-family: var(--font-head);
@@ -429,22 +402,11 @@
       display: block;
       margin-bottom: 0.35rem;
     }
-    .pillar-text {
-      font-size: 0.85rem;
-      color: var(--smoke);
-      line-height: 1.5;
-    }
+    .pillar-text { font-size: 0.85rem; color: var(--smoke); line-height: 1.5; }
 
-    /* ── STORY ───────────────────────────────────────────── */
-    #story {
-      background: var(--charcoal);
-      padding: 7rem 3rem;
-    }
+    #story { background: var(--charcoal); padding: 7rem 3rem; }
 
-    .story-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+    .story-inner { max-width: 1400px; margin: 0 auto; }
 
     .story-header {
       display: grid;
@@ -472,26 +434,9 @@
     .ep-card:nth-child(3n) { border-right: none; }
     .ep-card:nth-last-child(-n+3) { border-bottom: none; }
 
-    .ep-num {
-      font-family: var(--font-head);
-      font-size: 2.2rem;
-      color: var(--ash);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-    .ep-title {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: var(--green);
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-    .ep-desc {
-      font-size: 0.82rem;
-      color: var(--smoke);
-      line-height: 1.55;
-    }
+    .ep-num { font-family: var(--font-head); font-size: 2.2rem; color: var(--ash); line-height: 1; margin-bottom: 0.5rem; }
+    .ep-title { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; color: var(--green); text-transform: uppercase; margin-bottom: 0.6rem; }
+    .ep-desc { font-size: 0.82rem; color: var(--smoke); line-height: 1.55; }
 
     .pilot-callout {
       grid-column: 1 / -1;
@@ -504,366 +449,202 @@
     .pilot-callout .ep-title { color: var(--offwhite); }
     .pilot-callout .ep-desc { color: rgba(255,255,255,0.75); }
 
-    /* ── TEAMS ───────────────────────────────────────────── */
-    #teams {
-      padding: 7rem 3rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+    #teams { padding: 7rem 3rem; max-width: 1400px; margin: 0 auto; }
 
-    .teams-header {
-      margin-bottom: 4rem;
-      max-width: 600px;
-    }
+    .teams-header { margin-bottom: 4rem; max-width: 600px; }
 
-    .teams-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
+    .teams-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 
-    .team-card {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 2/3;
-    }
+    .team-card { position: relative; overflow: hidden; aspect-ratio: 2/3; }
     .team-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 100%; height: 100%; object-fit: cover;
       filter: brightness(0.5) saturate(0.4) contrast(1.2);
       transition: filter 0.6s, transform 0.6s;
       display: block;
     }
-    .team-card:hover img {
-      filter: brightness(0.65) saturate(0.7) contrast(1.1);
-      transform: scale(1.04);
-    }
+    .team-card:hover img { filter: brightness(0.65) saturate(0.7) contrast(1.1); transform: scale(1.04); }
     .team-overlay {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(8,8,8,0.95) 30%, transparent 70%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      display: flex; flex-direction: column; justify-content: flex-end;
       padding: 2rem 1.5rem;
     }
-    .team-accent {
-      width: 30px;
-      height: 3px;
-      margin-bottom: 1rem;
-    }
-    .team-oda {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      color: var(--smoke);
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-    .team-name {
-      font-family: var(--font-head);
-      font-size: 2rem;
-      letter-spacing: 0.06em;
-      line-height: 1;
-      margin-bottom: 0.8rem;
-    }
-    .team-role {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      margin-bottom: 0.8rem;
-      text-transform: uppercase;
-    }
-    .team-desc {
-      font-size: 0.82rem;
-      color: var(--smoke);
-      line-height: 1.5;
-    }
+    .team-accent { width: 30px; height: 3px; margin-bottom: 1rem; }
+    .team-oda { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.3em; color: var(--smoke); text-transform: uppercase; margin-bottom: 0.4rem; }
+    .team-name { font-family: var(--font-head); font-size: 2rem; letter-spacing: 0.06em; line-height: 1; margin-bottom: 0.8rem; }
+    .team-role { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.2em; margin-bottom: 0.8rem; text-transform: uppercase; }
+    .team-desc { font-size: 0.82rem; color: var(--smoke); line-height: 1.5; }
 
-    /* ── CREATOR ─────────────────────────────────────────── */
-    #creator {
-      background: var(--charcoal);
-      padding: 7rem 3rem;
-    }
+    #creator { background: var(--charcoal); padding: 7rem 3rem; }
 
     .creator-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 380px 1fr;
-      gap: 6rem;
-      align-items: start;
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: 380px 1fr;
+      gap: 6rem; align-items: start;
     }
 
-    .creator-photo-wrap {
-      position: relative;
-    }
+    .creator-photo-wrap { position: relative; }
     .creator-photo-wrap img {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      object-position: top;
-      filter: brightness(0.9) contrast(1.1) saturate(0.6);
-      display: block;
+      width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top;
+      filter: brightness(0.9) contrast(1.1) saturate(0.6); display: block;
     }
     .creator-photo-wrap::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      right: -10px;
-      width: 60%;
-      height: 60%;
-      border: 1px solid var(--dust);
-      z-index: -1;
+      content: ''; position: absolute; bottom: -10px; right: -10px;
+      width: 60%; height: 60%; border: 1px solid var(--dust); z-index: -1;
     }
 
-    .creator-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin: 2rem 0;
-    }
+    .creator-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 2rem 0; }
     .badge {
+      font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.18em;
+      text-transform: uppercase; padding: 0.4rem 0.8rem;
+      border: 1px solid var(--ash); color: var(--smoke);
+    }
+    .badge.hi { border-color: var(--green); color: var(--green); }
+
+.laurels-row {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      margin: 1.5rem 0 2rem;
+      flex-wrap: wrap;
+    }
+    .laurel-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.8rem 1.2rem;
+      min-width: 180px;
+    }
+    .laurel-arms {
+      font-size: 1.4rem;
+      color: var(--offwhite);
+      opacity: 0.7;
+      line-height: 1;
+    }
+    .laurel-text { text-align: center; }
+    .laurel-top {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      color: var(--smoke);
+      text-transform: uppercase;
+    }
+    .laurel-main {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .laurel-sub {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      color: var(--smoke);
+      text-transform: uppercase;
+    }
+    .laurel-year {
       font-family: var(--font-mono);
       font-size: 0.6rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      padding: 0.4rem 0.8rem;
-      border: 1px solid var(--ash);
-      color: var(--smoke);
-    }
-    .badge.hi {
-      border-color: var(--green);
       color: var(--green);
+      letter-spacing: 0.2em;
+      margin-top: 0.2rem;
     }
 
-    .cred-list {
-      list-style: none;
-      margin-top: 2rem;
-    }
+    .cred-list { list-style: none; margin-top: 2rem; }
     .cred-list li {
-      display: flex;
-      gap: 1.5rem;
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--ash);
-      font-size: 0.88rem;
+      display: flex; gap: 1.5rem; padding: 1rem 0;
+      border-bottom: 1px solid var(--ash); font-size: 0.88rem;
     }
     .cred-list li:first-child { border-top: 1px solid var(--ash); }
     .cred-key {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.15em;
-      color: var(--green);
-      text-transform: uppercase;
-      min-width: 90px;
-      padding-top: 0.1rem;
+      font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.15em;
+      color: var(--green); text-transform: uppercase; min-width: 90px; padding-top: 0.1rem;
     }
     .cred-val { color: var(--offwhite); }
 
-    /* ── STATUS ──────────────────────────────────────────── */
-    #status {
-      padding: 7rem 3rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+    #status { padding: 7rem 3rem; max-width: 1400px; margin: 0 auto; }
 
-    .status-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      margin-top: 4rem;
-    }
+    .status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 4rem; }
 
     .status-block-title {
-      font-family: var(--font-head);
-      font-size: 1.8rem;
-      letter-spacing: 0.05em;
-      color: var(--white);
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.8rem;
+      font-family: var(--font-head); font-size: 1.8rem; letter-spacing: 0.05em;
+      color: var(--white); margin-bottom: 1.5rem; padding-bottom: 0.8rem;
       border-bottom: 1px solid var(--ash);
     }
 
     .sub-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 1rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      gap: 1rem;
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); gap: 1rem;
     }
-    .sub-company {
-      font-size: 0.9rem;
-      color: var(--offwhite);
-      font-weight: 700;
-    }
-    .sub-detail {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: var(--smoke);
-      letter-spacing: 0.1em;
-      margin-top: 0.2rem;
-    }
+    .sub-company { font-size: 0.9rem; color: var(--offwhite); font-weight: 700; }
+    .sub-detail { font-family: var(--font-mono); font-size: 0.6rem; color: var(--smoke); letter-spacing: 0.1em; margin-top: 0.2rem; }
     .sub-status {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.8rem;
-      white-space: nowrap;
+      font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; padding: 0.3rem 0.8rem; white-space: nowrap;
     }
     .sub-status.submitted { color: var(--smoke); border: 1px solid var(--ash); }
     .sub-status.offered { color: var(--gold); border: 1px solid var(--gold); }
     .sub-status.selected { color: var(--green); border: 1px solid var(--green); }
 
     .script-row {
-      display: grid;
-      grid-template-columns: 60px 1fr auto;
-      align-items: baseline;
-      gap: 1rem;
-      padding: 1rem 0;
+      display: grid; grid-template-columns: 60px 1fr auto;
+      align-items: baseline; gap: 1rem; padding: 1rem 0;
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .script-ep {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--green);
-      letter-spacing: 0.15em;
-    }
-    .script-title {
-      font-size: 0.88rem;
-      color: var(--offwhite);
-    }
-    .script-status {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
+    .script-ep { font-family: var(--font-mono); font-size: 0.65rem; color: var(--green); letter-spacing: 0.15em; }
+    .script-title { font-size: 0.88rem; color: var(--offwhite); }
+    .script-status { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
     .script-status.complete { color: var(--green); }
     .script-status.draft { color: var(--gold); }
     .script-status.outlined { color: var(--smoke); }
 
-    /* ── CONTACT ─────────────────────────────────────────── */
-    #contact {
-      background: var(--black);
-      border-top: 1px solid var(--ash);
-      padding: 7rem 3rem;
-      text-align: center;
-    }
+    #contact { background: var(--black); border-top: 1px solid var(--ash); padding: 7rem 3rem; text-align: center; }
 
-    .contact-inner {
-      max-width: 640px;
-      margin: 0 auto;
-    }
+    .contact-inner { max-width: 640px; margin: 0 auto; }
 
     .contact-title {
-      font-family: var(--font-head);
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      letter-spacing: 0.04em;
-      color: var(--white);
-      line-height: 0.95;
-      margin-bottom: 1.5rem;
+      font-family: var(--font-head); font-size: clamp(3rem, 6vw, 5.5rem);
+      letter-spacing: 0.04em; color: var(--white); line-height: 0.95; margin-bottom: 1.5rem;
     }
 
-    .contact-sub {
-      font-size: 0.9rem;
-      color: var(--smoke);
-      margin-bottom: 3rem;
-      line-height: 1.7;
-    }
+    .contact-sub { font-size: 0.9rem; color: var(--smoke); margin-bottom: 3rem; line-height: 1.7; }
 
     .contact-email {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--black);
-      background: var(--green);
-      padding: 1.1rem 3rem;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
-      margin-bottom: 2rem;
+      display: inline-block; font-family: var(--font-mono); font-size: 0.75rem;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--black);
+      background: var(--green); padding: 1.1rem 3rem; text-decoration: none;
+      transition: background 0.2s, transform 0.2s; margin-bottom: 2rem;
     }
-    .contact-email:hover {
-      background: var(--offwhite);
-      transform: translateY(-3px);
-    }
+    .contact-email:hover { background: var(--offwhite); transform: translateY(-3px); }
 
     .contact-note {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      color: var(--ash);
-      text-transform: uppercase;
-      margin-top: 1rem;
+      font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.2em;
+      color: var(--ash); text-transform: uppercase; margin-top: 1rem;
     }
 
-    /* ── FOOTER ──────────────────────────────────────────── */
     footer {
-      background: var(--black);
-      border-top: 1px solid var(--ash);
-      padding: 2rem 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
+      background: var(--black); border-top: 1px solid var(--ash);
+      padding: 2rem 3rem; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 1rem;
     }
 
-    .footer-logo {
-      font-family: var(--font-head);
-      font-size: 1.1rem;
-      letter-spacing: 0.1em;
-      color: var(--smoke);
-    }
+    .footer-logo { font-family: var(--font-head); font-size: 1.1rem; letter-spacing: 0.1em; color: var(--smoke); }
 
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
     .footer-links a {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      color: var(--ash);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color 0.2s;
+      font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em;
+      color: var(--ash); text-decoration: none; text-transform: uppercase; transition: color 0.2s;
     }
     .footer-links a:hover { color: var(--green); }
 
-    .footer-copy {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      color: var(--ash);
-    }
+    .footer-copy { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.15em; color: var(--ash); }
 
-    /* ── WARD QUOTE BAR ──────────────────────────────────── */
-    .ward-bar {
-      background: var(--rust);
-      padding: 1rem 3rem;
-      text-align: center;
-    }
-    .ward-bar p {
-      font-style: italic;
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.8);
-    }
-    .ward-bar span {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      color: rgba(255,255,255,0.5);
-      margin-left: 1rem;
-    }
+    .ward-bar { background: var(--rust); padding: 1rem 3rem; text-align: center; }
+    .ward-bar p { font-style: italic; font-size: 0.82rem; color: rgba(255,255,255,0.8); }
+    .ward-bar span { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.5); margin-left: 1rem; }
 
-    /* ── ANIMATIONS ──────────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -873,17 +654,9 @@
       to   { opacity: 1; }
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
@@ -909,7 +682,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav id="nav">
     <a href="#hero" class="nav-logo">CALDER<span>WAR</span>STORIES</a>
     <ul class="nav-links">
@@ -922,7 +694,6 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section id="hero">
     <div class="hero-photos">
       <div class="hp"></div>
@@ -945,12 +716,10 @@
     <div class="hero-scroll">Scroll</div>
   </section>
 
-  <!-- WARD QUOTE -->
   <div class="ward-bar">
     <p>"She will love you, but only a little... and in the end, she will leave you for a younger man." <span>— James R. Ward, OSS</span></p>
   </div>
 
-  <!-- REEL -->
   <section id="reel">
     <div class="reel-header">
       <div>
@@ -959,15 +728,13 @@
       </div>
     </div>
     <div class="vimeo-wrap">
-      <iframe src="https://player.vimeo.com/video/1167832091?autoplay=0&title=0&byline=0&portrait=0&color=00b86b"
-        allowfullscreen
-        allow="autoplay; fullscreen; picture-in-picture">
+      <iframe src="https://player.vimeo.com/video/1183729364?autoplay=0&title=0&byline=0&portrait=0&color=00b86b"
+        allowfullscreen allow="autoplay; fullscreen; picture-in-picture">
       </iframe>
     </div>
     <p class="reel-note">// Real footage. Real operations. 2013–2014 Afghanistan.</p>
   </section>
 
-  <!-- SERIES -->
   <section id="series">
     <div class="series-photo reveal">
       <img src="img_jay_blue_scarf.jpg" alt="Jason Green, ODA 3336" loading="lazy">
@@ -1001,7 +768,6 @@
     </div>
   </section>
 
-  <!-- STORY -->
   <section id="story">
     <div class="story-inner">
       <div class="story-header reveal">
@@ -1016,78 +782,28 @@
           <p class="body-text">Every episode ends with an Every Time I Die track. Music is POV — never omniscient.</p>
         </div>
       </div>
-
       <div class="story-episodes reveal">
         <div class="ep-card pilot-callout">
           <div class="ep-num">01</div>
           <div class="ep-title">Jalrez — The Pilot</div>
           <div class="ep-desc">Green-on-blue attack. Objective camera. No score. Jay arrives, reports to SGM, meets ODA 3336. The sandbag throne. The Mason story. The fire pit. He is home. <strong style="color:var(--offwhite)">58 pages — complete and available.</strong></div>
         </div>
-        <div class="ep-card">
-          <div class="ep-num">02</div>
-          <div class="ep-title">3334 / 3335</div>
-          <div class="ep-desc">George Bannar KIA in Wardak. Chuck codes twice, survives. The Shank memorial.</div>
-        </div>
-        <div class="ep-card">
-          <div class="ep-num">03</div>
-          <div class="ep-title">The New Guy</div>
-          <div class="ep-desc">Funeral detail. Lindsey: "Come back to me." The DUI story. The acid trip.</div>
-        </div>
-        <div class="ep-card">
-          <div class="ep-num">04</div>
-          <div class="ep-title">Welcome to Kunduz</div>
-          <div class="ep-desc">Abandoned airbase. Chinook insertion. First kill — handled with restraint.</div>
-        </div>
-        <div class="ep-card">
-          <div class="ep-num">05</div>
-          <div class="ep-title">The Dirty Side</div>
-          <div class="ep-desc">"Fancy" by Iggy Azalea. Wrong-side insertion. Chuck shot. Danger-close 500lb bomb.</div>
-        </div>
-        <div class="ep-card">
-          <div class="ep-num">06</div>
-          <div class="ep-title">The Last Night in Kunduz</div>
-          <div class="ep-desc">RPG ambush. JJ roof circus. The last fist pound with Mikey Cathcart.</div>
-        </div>
-        <div class="ep-card">
-          <div class="ep-num">07</div>
-          <div class="ep-title">The Ones Who Come Home</div>
-          <div class="ep-desc">Pitch Perfect — last pure lightness. CIB awarding. Civilian casualty. Moral center.</div>
-        </div>
-        <div class="ep-card">
-          <div class="ep-num">08</div>
-          <div class="ep-title">Nangarhar</div>
-          <div class="ep-desc">Thanksgiving. Equipment prep ritual. The contact. Blunt force. Sky spinning. Cut to black.</div>
-        </div>
-        <div class="ep-card">
-          <div class="ep-num">09</div>
-          <div class="ep-title">The Coin Has a Say</div>
-          <div class="ep-desc">ISR: perfect L-shaped ambush. Airstrike denied. "Get off my fingers." "Treat yourself."</div>
-        </div>
-        <div class="ep-card">
-          <div class="ep-num">10</div>
-          <div class="ep-title">The Waiting Room</div>
-          <div class="ep-desc">Lindsey's side of the call. Bear-style pressure cooker. Dan calls. Fort Bragg reunion.</div>
-        </div>
-        <div class="ep-card">
-          <div class="ep-num">11</div>
-          <div class="ep-title">The Quiet</div>
-          <div class="ep-desc">Jay's dissociation at home. The boys still fighting in Nangarhar. "Jay… come back to me."</div>
-        </div>
-        <div class="ep-card">
-          <div class="ep-num">12</div>
-          <div class="ep-title">The Mountain</div>
-          <div class="ep-desc">Jay absent entirely. Reggie's baptism by fire with 3335. Ray: "Welcome to the show, kid."</div>
-        </div>
-        <div class="ep-card">
-          <div class="ep-num">13</div>
-          <div class="ep-title">The Return</div>
-          <div class="ep-desc">German transit. Bagram HLZ. JJ: "Why so serious?" He is home. He is whole.</div>
-        </div>
+        <div class="ep-card"><div class="ep-num">02</div><div class="ep-title">3334 / 3335</div><div class="ep-desc">George Bannar KIA in Wardak. Chuck codes twice, survives. The Shank memorial.</div></div>
+        <div class="ep-card"><div class="ep-num">03</div><div class="ep-title">The New Guy</div><div class="ep-desc">Funeral detail. Lindsey: "Come back to me." The DUI story. The acid trip.</div></div>
+        <div class="ep-card"><div class="ep-num">04</div><div class="ep-title">Welcome to Kunduz</div><div class="ep-desc">Abandoned airbase. Chinook insertion. First kill — handled with restraint.</div></div>
+        <div class="ep-card"><div class="ep-num">05</div><div class="ep-title">The Dirty Side</div><div class="ep-desc">"Fancy" by Iggy Azalea. Wrong-side insertion. Chuck shot. Danger-close 500lb bomb.</div></div>
+        <div class="ep-card"><div class="ep-num">06</div><div class="ep-title">The Last Night in Kunduz</div><div class="ep-desc">RPG ambush. JJ roof circus. The last fist pound with Mikey Cathcart.</div></div>
+        <div class="ep-card"><div class="ep-num">07</div><div class="ep-title">The Ones Who Come Home</div><div class="ep-desc">Pitch Perfect — last pure lightness. CIB awarding. Civilian casualty. Moral center.</div></div>
+        <div class="ep-card"><div class="ep-num">08</div><div class="ep-title">Nangarhar</div><div class="ep-desc">Thanksgiving. Equipment prep ritual. The contact. Blunt force. Sky spinning. Cut to black.</div></div>
+        <div class="ep-card"><div class="ep-num">09</div><div class="ep-title">The Coin Has a Say</div><div class="ep-desc">ISR: perfect L-shaped ambush. Airstrike denied. "Get off my fingers." "Treat yourself."</div></div>
+        <div class="ep-card"><div class="ep-num">10</div><div class="ep-title">The Waiting Room</div><div class="ep-desc">Lindsey's side of the call. Bear-style pressure cooker. Dan calls. Fort Bragg reunion.</div></div>
+        <div class="ep-card"><div class="ep-num">11</div><div class="ep-title">The Quiet</div><div class="ep-desc">Jay's dissociation at home. The boys still fighting in Nangarhar. "Jay… come back to me."</div></div>
+        <div class="ep-card"><div class="ep-num">12</div><div class="ep-title">The Mountain</div><div class="ep-desc">Jay absent entirely. Reggie's baptism by fire with 3335. Ray: "Welcome to the show, kid."</div></div>
+        <div class="ep-card"><div class="ep-num">13</div><div class="ep-title">The Return</div><div class="ep-desc">German transit. Bagram HLZ. JJ: "Why so serious?" He is home. He is whole.</div></div>
       </div>
     </div>
   </section>
 
-  <!-- TEAMS -->
   <section id="teams">
     <div class="teams-header reveal">
       <p class="section-label">The Ensemble</p>
@@ -1129,31 +845,37 @@
     </div>
   </section>
 
-  <!-- CREATOR -->
+  <!-- CREATOR — all corrections applied -->
   <section id="creator">
     <div class="creator-inner">
       <div class="creator-photo-wrap reveal">
-        <img src="img_jay_blue_scarf.jpg" alt="J.H. Calder — Jason A. Green" loading="lazy">
+        <img src="img_jay_blue_scarf.jpg" alt="Jason A. Green — J.H. Calder" loading="lazy">
       </div>
       <div class="reveal">
         <p class="section-label">Writer / Director / Showrunner</p>
-        <h2 class="section-heading">J.H.<br>CALDER</h2>
+        <h2 class="section-heading">JASON A.<br>GREEN</h2>
         <div class="section-rule"></div>
-        <p class="body-text" style="font-size:0.82rem;color:var(--smoke);margin-bottom:0.3rem">pen name of Jason A. Green</p>
+        <p class="body-text" style="font-size:0.82rem;color:var(--smoke);margin-bottom:0.3rem">Writing as J.H. Calder</p>
         <p class="body-text">I served nine combat deployments as a Special Forces medic. I've carried men off the battlefield, held their hands while they died, laughed with them around burn barrels. For years, every portrayal of Special Forces on screen felt wrong. Sanitized. Hero-worshipped. Politicized. I never saw my team. I never saw the truth.</p>
         <p class="body-text">My wife Lindsey is a combat veteran and former medic. She survived an IED blast that killed everyone else in her vehicle. Beat cancer. She is the emotional spine of this series. I'm not interested in propaganda or politics. I'm interested in the men I served with — their stories, their laughter, their pain, their ghosts.</p>
 
         <div class="creator-badges">
-          <span class="badge hi">ODA 3336 · C/3/3 SFG(A)</span>
+          <span class="badge hi">ODA 3336, 3335, 3334 · C/3/3 SFG(A)</span>
           <span class="badge hi">Bronze Star w/Valor</span>
           <span class="badge hi">Purple Heart</span>
+          <span class="badge hi">Combat Infantryman Badge</span>
+          <span class="badge hi">Special Forces Tab</span>
           <span class="badge">9 Combat Deployments</span>
-          <span class="badge">2001–2014</span>
+          <span class="badge">2004–2026</span>
           <span class="badge">Autobiographical</span>
         </div>
 
+        <div class="laurels-row">
+
+        </div>
+
         <ul class="cred-list">
-          <li><span class="cred-key">Broadcast</span><span class="cred-val">THE BUSHMEN selected — WRPN.tv Broadcast Competition</span></li>
+          <li><span class="cred-key">Recognition</span><span class="cred-val">Inroads Screenwriting Fellowship — Semi-Finalist 2026 &nbsp;·&nbsp; WRPN.tv Screenplay Competition — Official Selection 2026</span></li>
           <li><span class="cred-key">Pilot</span><span class="cred-val">Episode 1 "Jalrez" — 58 pages — Complete &amp; Available</span></li>
           <li><span class="cred-key">Drafts</span><span class="cred-val">Episodes 2, 5, 9 — Complete drafts. Remaining fully outlined.</span></li>
           <li><span class="cred-key">Bible</span><span class="cred-val">Master Series Bible v4 — Available on request</span></li>
@@ -1162,16 +884,30 @@
     </div>
   </section>
 
-  <!-- STATUS -->
+  <!-- STATUS — April 2026, Inroads added -->
   <section id="status">
     <div class="reveal">
-      <p class="section-label">Market Position — February 2026</p>
+      <p class="section-label">Market Position — April 2026</p>
       <h2 class="section-heading">SUBMISSION<br>STATUS</h2>
       <div class="section-rule"></div>
     </div>
     <div class="status-grid">
       <div class="reveal">
-        <div class="status-block-title">Industry Submissions</div>
+        <div class="status-block-title">Industry &amp; Competition</div>
+        <div class="sub-row">
+          <div>
+            <div class="sub-company">Inroads Screenwriting Fellowship</div>
+            <div class="sub-detail">Season 9 — 2026</div>
+          </div>
+          <span class="sub-status selected">Semi-Finalist</span>
+        </div>
+        <div class="sub-row">
+          <div>
+            <div class="sub-company">WRPN.tv Screenplay Competition</div>
+            <div class="sub-detail">Broadcast Competition — 2026</div>
+          </div>
+          <span class="sub-status selected">Selected</span>
+        </div>
         <div class="sub-row">
           <div>
             <div class="sub-company">Insignia Entertainment</div>
@@ -1206,13 +942,6 @@
             <div class="sub-detail">max@maxfmedia.com</div>
           </div>
           <span class="sub-status submitted">Submitted</span>
-        </div>
-        <div class="sub-row">
-          <div>
-            <div class="sub-company">WRPN.tv</div>
-            <div class="sub-detail">Broadcast Competition</div>
-          </div>
-          <span class="sub-status selected">Selected</span>
         </div>
       </div>
       <div class="reveal">
@@ -1256,7 +985,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="contact-inner reveal">
       <h2 class="contact-title">REQUEST<br>MATERIALS</h2>
@@ -1266,7 +994,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-logo">CALDER WAR STORIES</div>
     <ul class="footer-links">
@@ -1279,13 +1006,11 @@
   </footer>
 
   <script>
-    // Nav scroll state
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 80);
     });
 
-    // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
@@ -1297,16 +1022,7 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
     reveals.forEach(el => observer.observe(el));
 
-    // Smooth anchor scroll with offset for nav
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-          window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-        }
-      });
-    });
+// scroll handled natively
   </script>
 </body>
 </html>
