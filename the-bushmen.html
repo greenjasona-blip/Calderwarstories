@@ -48,7 +48,7 @@ h1,h2,h3{font-family:var(--display);font-weight:700;text-transform:uppercase;let
 .hero p.lede{max-width:62ch;margin:18px 0 0;font-size:19px;color:var(--paper)}
 .wall{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding-block:32px 8px}
 .wall a{flex:1 1 120px;max-width:156px;text-decoration:none}
-.wall img{width:100%;aspect-ratio:2/3;object-fit:cover;border:1px solid var(--line);transition:transform .25s ease,border-color .25s ease;filter:saturate(.92)}
+.wall img{width:100%;aspect-ratio:2/3;object-fit:contain;background:#0a0b09;border:1px solid var(--line);transition:transform .25s ease,border-color .25s ease;filter:saturate(.92)}
 .wall a:hover img{transform:translateY(-4px);border-color:var(--blood)}
 .wall span{display:block;margin-top:8px;font:600 14px/1.15 var(--display);letter-spacing:.06em;text-transform:uppercase;text-align:center}
 
@@ -61,7 +61,7 @@ section{padding-block:56px;border-top:1px solid var(--line)}
 .files{display:grid;gap:0}
 .file{display:grid;grid-template-columns:150px minmax(0,1fr) 240px;gap:28px;padding-block:28px;border-bottom:1px solid var(--line);align-items:start}
 .file:first-child{border-top:1px solid var(--line)}
-.file img{width:150px;aspect-ratio:2/3;object-fit:cover;border:1px solid var(--line)}
+.file img{width:150px;aspect-ratio:2/3;object-fit:contain;background:#0a0b09;border:1px solid var(--line)}
 .file h3{font-size:clamp(30px,3.6vw,42px)}
 .file h3 a{text-decoration:none}
 .file h3 a:hover{color:var(--blood)}
@@ -115,6 +115,11 @@ section{padding-block:56px;border-top:1px solid var(--line)}
 /* title page */
 .tp{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:48px;padding-block:44px 56px;align-items:start}
 .tp .poster img{width:100%;border:1px solid var(--line)}
+.art{columns:3 260px;column-gap:14px}
+.art a{display:block;break-inside:avoid;margin-bottom:14px;border:1px solid var(--line);background:#0a0b09;transition:border-color .2s}
+.art a:hover{border-color:var(--blood)}
+.art img{width:100%;height:auto;display:block}
+.art.wide{grid-template-columns:minmax(0,1fr)}
 .tp h1{font-size:clamp(54px,8vw,104px)}
 .tp .logline{font-size:20px;line-height:1.55;max-width:60ch;margin:18px 0 0}
 .tp .tagline{font:italic 400 19px/1.4 var(--body);color:var(--brass);margin:14px 0 0}
@@ -200,6 +205,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
   </div>
 </div>
+
+<section><div class="wrap">
+  <div class="sec-head"><h2>Key Art</h2><span class="label">Posters and one-sheets · tap to enlarge</span></div>
+  <div class="art"><a href="img/art/bushmen_thumbs-up_8-laurels.jpg" target="_blank" rel="noopener"><img src="img/art/bushmen_thumbs-up_8-laurels.jpg" alt="Rooftop thumbs-up, eight 2026 laurels" loading="lazy"></a><a href="img/art/bushmen_austin_laurel-left.jpg" target="_blank" rel="noopener"><img src="img/art/bushmen_austin_laurel-left.jpg" alt="Prone overwatch, Austin Film Festival Second Rounder" loading="lazy"></a><a href="img/art/bushmen_purple_wrpn.jpg" target="_blank" rel="noopener"><img src="img/art/bushmen_purple_wrpn.jpg" alt="Helicopter interior, WRPN.tv Platinum Award" loading="lazy"></a><a href="img/art/bushmen_walk_hollywood-storytellers.jpg" target="_blank" rel="noopener"><img src="img/art/bushmen_walk_hollywood-storytellers.jpg" alt="Team walking with dog, Hollywood Storytellers Quarter-Finalist" loading="lazy"></a><a href="img/art/bushmen_blue_alpine.jpg" target="_blank" rel="noopener"><img src="img/art/bushmen_blue_alpine.jpg" alt="Rifle point of view, Alpine International Film Festival Semi-Finalist" loading="lazy"></a><a href="img/art/bushmen_green_outstanding-screenplays.jpg" target="_blank" rel="noopener"><img src="img/art/bushmen_green_outstanding-screenplays.jpg" alt="Team on the move, Outstanding Screenplays Quarter-Finalist" loading="lazy"></a><a href="img/art/bushmen_yellow_emerging-screenwriters.jpg" target="_blank" rel="noopener"><img src="img/art/bushmen_yellow_emerging-screenwriters.jpg" alt="Spent brass, Emerging Screenwriters Quarter-Finalist" loading="lazy"></a><a href="img/art/bushmen_red_military-story.jpg" target="_blank" rel="noopener"><img src="img/art/bushmen_red_military-story.jpg" alt="Team staged on a wall, Military Story Showcase Official Selection" loading="lazy"></a></div>
+</div></section>
 
 <section><div class="wrap">
   <blockquote class="quote">“Men, Special Forces is a mistress. Your wives will envy her because she will have your hearts. Your wives will be jealous of her because of the power to pull you away. This mistress will show you things never before seen and experience things never before felt. She will love you, but only a little, seducing you to want more, give more, die for her. She will take you away from the ones you love, and you will hate her for it, but leave her you never will, but if you must, you will miss her, for she has a part of you that will never be returned intact. And in the end, she will leave you for a younger man.”<cite>James R. Ward · Office of Strategic Services (OSS)</cite></blockquote>

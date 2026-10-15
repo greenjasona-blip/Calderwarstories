@@ -48,7 +48,7 @@ h1,h2,h3{font-family:var(--display);font-weight:700;text-transform:uppercase;let
 .hero p.lede{max-width:62ch;margin:18px 0 0;font-size:19px;color:var(--paper)}
 .wall{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding-block:32px 8px}
 .wall a{flex:1 1 120px;max-width:156px;text-decoration:none}
-.wall img{width:100%;aspect-ratio:2/3;object-fit:cover;border:1px solid var(--line);transition:transform .25s ease,border-color .25s ease;filter:saturate(.92)}
+.wall img{width:100%;aspect-ratio:2/3;object-fit:contain;background:#0a0b09;border:1px solid var(--line);transition:transform .25s ease,border-color .25s ease;filter:saturate(.92)}
 .wall a:hover img{transform:translateY(-4px);border-color:var(--blood)}
 .wall span{display:block;margin-top:8px;font:600 14px/1.15 var(--display);letter-spacing:.06em;text-transform:uppercase;text-align:center}
 
@@ -61,7 +61,7 @@ section{padding-block:56px;border-top:1px solid var(--line)}
 .files{display:grid;gap:0}
 .file{display:grid;grid-template-columns:150px minmax(0,1fr) 240px;gap:28px;padding-block:28px;border-bottom:1px solid var(--line);align-items:start}
 .file:first-child{border-top:1px solid var(--line)}
-.file img{width:150px;aspect-ratio:2/3;object-fit:cover;border:1px solid var(--line)}
+.file img{width:150px;aspect-ratio:2/3;object-fit:contain;background:#0a0b09;border:1px solid var(--line)}
 .file h3{font-size:clamp(30px,3.6vw,42px)}
 .file h3 a{text-decoration:none}
 .file h3 a:hover{color:var(--blood)}
@@ -115,6 +115,11 @@ section{padding-block:56px;border-top:1px solid var(--line)}
 /* title page */
 .tp{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:48px;padding-block:44px 56px;align-items:start}
 .tp .poster img{width:100%;border:1px solid var(--line)}
+.art{columns:3 260px;column-gap:14px}
+.art a{display:block;break-inside:avoid;margin-bottom:14px;border:1px solid var(--line);background:#0a0b09;transition:border-color .2s}
+.art a:hover{border-color:var(--blood)}
+.art img{width:100%;height:auto;display:block}
+.art.wide{grid-template-columns:minmax(0,1fr)}
 .tp h1{font-size:clamp(54px,8vw,104px)}
 .tp .logline{font-size:20px;line-height:1.55;max-width:60ch;margin:18px 0 0}
 .tp .tagline{font:italic 400 19px/1.4 var(--body);color:var(--brass);margin:14px 0 0}
@@ -191,7 +196,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <p class="tagline">The mission has no end.</p>
     <p class="logline">After fleeing a collapsing coup, a Special Forces team escapes into a forbidden jungle where time fractures, reality bends, and the men are hunted by a feral entity that was once one of their own — trapped in a closed loop they cannot break.</p>
     
-    <div class="block"><h2>Recognition · 2026</h2><div class="recs"><div class="tier"><span class="label">Second Rounder</span><ul><li><b>Austin Film Festival Script Competition</b> <span>· Drama Feature</span></li></ul></div><div class="tier"><span class="label">Semi-Finalist</span><ul><li><b>31st Annual Fade In Awards</b> <span>· Sci-Fi / Fantasy</span></li></ul></div><div class="tier"><span class="label">Official Selection</span><ul><li><b>Alpine International Film Festival</b> <span>· Best Feature Script</span></li><li><b>The Psychedelic Film and Music Festival</b> <span>· Best Psychedelic / Transpersonal Screenplay</span></li></ul></div></div></div>
+    <div class="block"><h2>Recognition · 2026</h2><div class="recs"><div class="tier"><span class="label">Second Rounder</span><ul><li><b>Austin Film Festival Script Competition</b> <span>· Drama Feature</span></li></ul></div><div class="tier"><span class="label">Semi-Finalist</span><ul><li><b>30th Annual Fade In Awards</b> <span>· Sci-Fi / Fantasy</span></li></ul></div><div class="tier"><span class="label">Official Selection</span><ul><li><b>Alpine International Film Festival</b> <span>· Best Feature Script</span></li><li><b>The Psychedelic Film and Music Festival</b> <span>· Best Psychedelic / Transpersonal Screenplay</span></li></ul></div></div></div>
     <div class="block"><h2>Available on request</h2><ul class="mats"><li>Feature screenplay</li><li>Logline &amp; synopsis</li></ul>
       <p class="label" style="margin-top:12px">Completed feature script</p>
       <div class="row"><a class="btn solid" href="mailto:jason@calderwarstories.com?subject=Materials%20request%20%E2%80%94%20Line%20of%20Departure">Request Line of Departure</a><button class="btn ghost" type="button" id="copy-email" data-copy="jason@calderwarstories.com">Copy email</button></div>
@@ -200,6 +205,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
   </div>
 </div>
+
+<section><div class="wrap">
+  <div class="sec-head"><h2>Key Art</h2><span class="label">Posters and one-sheets · tap to enlarge</span></div>
+  <div class="art"><a href="img/art/lineofdeparture_poster_pink_4-laurels.jpg" target="_blank" rel="noopener"><img src="img/art/lineofdeparture_poster_pink_4-laurels.jpg" alt="Kaleidoscope jungle poster, four 2026 laurels" loading="lazy"></a><a href="img/art/lineofdeparture_banner_austin.jpg" target="_blank" rel="noopener"><img src="img/art/lineofdeparture_banner_austin.jpg" alt="Kaleidoscope canopy banner, Austin Film Festival Second Rounder" loading="lazy"></a><a href="img/art/lineofdeparture_banner_fade-in.jpg" target="_blank" rel="noopener"><img src="img/art/lineofdeparture_banner_fade-in.jpg" alt="Team in jungle mist banner, Fade In Sci-Fi/Fantasy Semi-Finalist" loading="lazy"></a><a href="img/art/lineofdeparture_banner_alpine.jpg" target="_blank" rel="noopener"><img src="img/art/lineofdeparture_banner_alpine.jpg" alt="Canopy from below, Alpine International Film Festival Official Selection" loading="lazy"></a><a href="img/art/lineofdeparture_banner_psychedelic.jpg" target="_blank" rel="noopener"><img src="img/art/lineofdeparture_banner_psychedelic.jpg" alt="Jungle boots banner, Psychedelic Film and Music Festival Official Selection" loading="lazy"></a></div>
+</div></section>
 
 <div class="wrap pager">
   <a href="the-last-offering.html"><span class="label">← Previous</span>The Last Offering</a>
