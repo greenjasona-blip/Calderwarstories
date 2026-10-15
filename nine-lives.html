@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Nine Lives · Calder War Stories">
+<meta property="og:description" content="Nine Lives — short screenplay by Jason A. Green. One man. One building. One life he’ll burn the world to save. During a locked-down COVID-era apartment building crisis, a man fights his way through the building to rescue his trapped cat.">
+<title>Nine Lives · Calder War Stories</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Nine Lives — short screenplay by Jason A. Green. One man. One building. One life he’ll burn the world to save. During a locked-down COVID-era apartment building crisis, a man fights his way through the building to rescue his trapped cat.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: a field-file archive — a wall of seven equal posters, then one dossier row per title. */
+:root{
+  --ink:#0f100e; --panel:#171814; --line:#2b2c26; --paper:#e9e4d8; --muted:#a39e90;
+  --blood:#b3261e; --blood-deep:#8f1a1a; --brass:#c2a46b;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--paper);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.label{font:500 12px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:.95;margin:0;text-wrap:balance}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--ink) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
+.brand{font:700 20px/1 var(--display);letter-spacing:.2em;text-transform:uppercase;text-decoration:none}
+.brand span{color:var(--blood)}
+.nav{display:flex;gap:22px;flex-wrap:wrap}
+.nav a{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--muted)}
+.nav a:hover,.nav a[aria-current]{color:var(--paper)}
+
+/* home hero */
+.hero{padding-block:56px 28px}
+.hero h1{font-size:clamp(52px,9vw,112px)}
+.hero h1 em{font-style:normal;color:var(--blood)}
+.tp .poster{position:sticky;top:84px}
+.hero .sub{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:18px;align-items:baseline}
+.hero .role{font:600 22px/1.2 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--brass)}
+.hero p.lede{max-width:62ch;margin:18px 0 0;font-size:19px;color:var(--paper)}
+.wall{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding-block:32px 8px}
+.wall a{flex:1 1 120px;max-width:156px;text-decoration:none}
+.wall img{width:100%;aspect-ratio:2/3;object-fit:cover;border:1px solid var(--line);transition:transform .25s ease,border-color .25s ease;filter:saturate(.92)}
+.wall a:hover img{transform:translateY(-4px);border-color:var(--blood)}
+.wall span{display:block;margin-top:8px;font:600 14px/1.15 var(--display);letter-spacing:.06em;text-transform:uppercase;text-align:center}
+
+/* sections */
+section{padding-block:56px;border-top:1px solid var(--line)}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.sec-head h2{font-size:clamp(36px,5vw,56px)}
+
+/* dossier rows */
+.files{display:grid;gap:0}
+.file{display:grid;grid-template-columns:150px minmax(0,1fr) 240px;gap:28px;padding-block:28px;border-bottom:1px solid var(--line);align-items:start}
+.file:first-child{border-top:1px solid var(--line)}
+.file img{width:150px;aspect-ratio:2/3;object-fit:cover;border:1px solid var(--line)}
+.file h3{font-size:clamp(30px,3.6vw,42px)}
+.file h3 a{text-decoration:none}
+.file h3 a:hover{color:var(--blood)}
+.meta{margin:8px 0 12px;display:flex;gap:6px 14px;flex-wrap:wrap}
+.file p{margin:0;max-width:62ch}
+.tag{font-style:italic;color:var(--brass);margin-top:10px!important}
+.side{display:grid;gap:10px;align-content:start}
+.top-rec{font:600 15px/1.3 var(--display);letter-spacing:.04em;text-transform:uppercase}
+.top-rec small{display:block;font:400 13px/1.4 var(--body);text-transform:none;letter-spacing:0;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border:1px solid var(--blood);color:var(--paper);text-decoration:none;font:600 14px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;background:transparent;transition:background .2s}
+.btn:hover{background:var(--blood-deep)}
+.btn.solid{background:var(--blood-deep)}
+.btn.solid:hover{background:var(--blood)}
+.btn.ghost{border-color:var(--line)}
+.btn.ghost:hover{background:var(--panel)}
+
+/* recognition ledger */
+.ledger{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.ledger div{background:var(--ink);padding:20px}
+.ledger b{display:block;font:700 44px/1 var(--display);color:var(--paper);font-variant-numeric:tabular-nums}
+.ledger .label{margin-top:6px}
+.ledger p{margin:10px 0 0;font-size:15px;color:var(--muted)}
+.trac{margin-top:22px;font-size:16px;color:var(--muted);max-width:75ch}
+.trac strong{color:var(--paper);font-weight:600}
+
+/* development */
+.dev{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.dev div{background:var(--ink);padding:18px}
+.dev b{display:block;font:700 22px/1.05 var(--display);text-transform:uppercase;letter-spacing:.03em}
+.dev span{font-size:15px;color:var(--muted)}
+
+/* about */
+.about{display:grid;grid-template-columns:320px minmax(0,1fr);gap:40px;align-items:start}
+.about img{width:100%;aspect-ratio:1;object-fit:cover;border:1px solid var(--line);filter:grayscale(.25)}
+.about p{max-width:64ch;margin:0 0 16px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:24px}
+.facts div{background:var(--ink);padding:14px}
+.facts b{display:block;font:600 19px/1.15 var(--display);text-transform:uppercase;letter-spacing:.03em;margin-top:4px}
+.ribbon{margin-top:16px;font:500 13px/1.6 var(--mono);letter-spacing:.06em;color:var(--brass)}
+
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+.contact h2{font-size:clamp(44px,7vw,84px)}
+.addr{font:500 clamp(18px,2.4vw,24px)/1.3 var(--mono);word-break:break-all;margin:10px 0 6px;user-select:all}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.links{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px}
+.links a{font:500 13px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:4px}
+.links a:hover{color:var(--paper);border-color:var(--blood)}
+#copied{font:500 12px var(--mono);color:var(--brass);min-height:1em}
+
+/* title page */
+.tp{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:48px;padding-block:44px 56px;align-items:start}
+.tp .poster img{width:100%;border:1px solid var(--line)}
+.tp h1{font-size:clamp(54px,8vw,104px)}
+.tp .logline{font-size:20px;line-height:1.55;max-width:60ch;margin:18px 0 0}
+.tp .tagline{font:italic 400 19px/1.4 var(--body);color:var(--brass);margin:14px 0 0}
+.block{margin-top:34px}
+.block h2{font-size:26px;letter-spacing:.06em;margin-bottom:12px}
+.recs{display:grid;gap:18px}
+.tier{display:grid;grid-template-columns:170px minmax(0,1fr);gap:14px;border-top:1px solid var(--line);padding-top:12px}
+.tier ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.tier li b{font-weight:600}
+.tier li span{color:var(--muted)}
+.tier.win .label{color:var(--blood)}
+.mats{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.mats li{border:1px solid var(--line);padding:6px 10px;font:500 13px/1.3 var(--mono);color:var(--paper)}
+.pager{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:24px 48px;border-top:1px solid var(--line)}
+.pager a{text-decoration:none;font:600 16px/1.2 var(--display);letter-spacing:.08em;text-transform:uppercase}
+.pager a:hover{color:var(--blood)}
+.pager .label{display:block;margin-bottom:4px}
+
+/* bushmen extras */
+.quote{margin:0;padding-block:8px;max-width:72ch;font:italic 400 18px/1.65 var(--body)}
+.quote cite{display:block;margin-top:12px;font:500 12px/1.4 var(--mono);font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.reel{position:relative;display:block;max-width:760px;border:1px solid var(--line);text-decoration:none;overflow:hidden}
+.reel img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:brightness(.55)}
+.reel span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:12px;font:700 22px/1 var(--display);letter-spacing:.18em;text-transform:uppercase}
+.reel span::before{content:"";width:0;height:0;border-left:22px solid var(--paper);border-top:14px solid transparent;border-bottom:14px solid transparent}
+.reel:hover img{filter:brightness(.7)}
+.eps{display:grid;border-bottom:1px solid var(--line)}
+.ep{display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 14px;border-top:1px solid var(--line);padding-block:12px}
+.ep .n{font:600 14px/1.6 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums;grid-row:span 2}
+.ep .h{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
+.ep .h b{font:600 19px/1.2 var(--display);letter-spacing:.04em;text-transform:uppercase}
+.ep .h span{font:500 11px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--brass)}
+.ep p{margin:0;font-size:15px;color:var(--muted);max-width:75ch}
+.odas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.odas figure{margin:0}
+.odas img{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line)}
+.odas figcaption{margin-top:10px}
+.odas b{display:block;font:700 22px/1.1 var(--display);text-transform:uppercase}
+.odas p{margin:4px 0 0;font-size:15px;color:var(--muted)}
+.yes{columns:2;column-gap:28px;list-style:none;padding:0;margin:0}
+.yes li{break-inside:avoid;padding:8px 0;border-top:1px solid var(--line);font-size:16px}
+
+footer{border-top:1px solid var(--line);padding-block:28px 40px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:860px){
+  .file{grid-template-columns:110px minmax(0,1fr);gap:18px}
+  .file img{width:110px}
+  .file .side{grid-column:1/-1}
+  .about,.contact,.tp{grid-template-columns:minmax(0,1fr)}
+  .tp .poster{max-width:320px;position:static}
+  .about img{max-width:320px}
+  .odas{grid-template-columns:minmax(0,1fr)}
+  .yes{columns:1}
+}
+@media (max-width:520px){
+  .tier{grid-template-columns:minmax(0,1fr);gap:6px}
+  .wall{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:14px;scroll-snap-type:x mandatory}
+  .wall a{flex:0 0 118px;scroll-snap-align:start}
+  .nav{gap:14px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="index.html">Calder <span>War</span> Stories</a><nav class="nav" aria-label="Main"><a href="index.html#slate">Slate</a><a href="index.html#recognition">Recognition</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav></div></header>
+
+<main>
+<div class="wrap tp">
+  <div class="poster"><img src="img/nine-lives.jpg" alt="Nine Lives poster"></div>
+  <div>
+    <span class="label">Short screenplay · Action · Thriller</span>
+    <h1 style="margin-top:12px">Nine Lives</h1>
+    
+    <p class="logline">One man. One building. One life he’ll burn the world to save. During a locked-down COVID-era apartment building crisis, a man fights his way through the building to rescue his trapped cat.</p>
+    
+    <div class="block"><h2>Recognition · 2026</h2><div class="recs"><div class="tier win"><span class="label">Winner</span><ul><li><b>Top Shorts</b> <span>· Best Screenplay · Best Action Screenplay</span></li><li><b>Top Indie Film Awards</b> <span>· Best Writing · Best Short Script</span></li><li><b>Golden Lion International Film Festival</b> <span>· Best Short Script</span></li><li><b>WRPN.tv Short, Tight and Loose</b> <span>· Gold Award</span></li><li><b>WRPN.tv Screenplay Competition</b> <span>· Silver Award, Short Film Scripts</span></li></ul></div><div class="tier"><span class="label">Finalist</span><ul><li><b>Top Shorts</b></li><li><b>International Indie Screenplay Festival</b> <span>· Best Screenplay Short Film</span></li></ul></div><div class="tier"><span class="label">Nominee</span><ul><li><b>Best Damn Film Awards</b> <span>· Best Damn Script Champion · Best Damn Short Scripts</span></li><li><b>AFIN International Film Festival</b> <span>· Best Short Screenplay</span></li><li><b>Top Indie Film Awards</b> <span>· Best Original Idea</span></li><li><b>Golden Pen Script Awards</b></li></ul></div><div class="tier"><span class="label">Semi-Finalist</span><ul><li><b>Florida Shorts</b></li><li><b>Hollywood Just4Shorts</b></li></ul></div><div class="tier"><span class="label">Honorable Mention</span><ul><li><b>Independent Shorts Awards</b> <span>· Best Short Script</span></li><li><b>NIFA Awards</b> <span>· Best Short Screenplay</span></li><li><b>Hollywood Best Indie Film Awards</b></li></ul></div><div class="tier"><span class="label">Official Selection</span><ul><li><b>Toronto International Short Film Awards</b></li><li><b>Independent Shorts Awards</b></li><li><b>Best Damn Film Awards</b></li><li><b>Golden Pen Script Awards</b></li></ul></div></div></div>
+    <div class="block"><h2>Available on request</h2><ul class="mats"><li>Short screenplay</li></ul>
+      <p class="label" style="margin-top:12px">Completed short script</p>
+      <div class="row"><a class="btn solid" href="mailto:jason@calderwarstories.com?subject=Materials%20request%20%E2%80%94%20Nine%20Lives">Request Nine Lives</a><button class="btn ghost" type="button" id="copy-email" data-copy="jason@calderwarstories.com">Copy email</button></div>
+      <div class="addr" style="font-size:15px;margin-top:12px">jason@calderwarstories.com</div>
+      <div id="copied" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap pager">
+  <a href="the-unmaking.html"><span class="label">← Previous</span>The Unmaking</a>
+  <a href="index.html#slate" style="align-self:end"><span class="label">All titles</span>The Slate</a>
+  <a href="specular-reflection.html" style="text-align:right"><span class="label">Next →</span>Specular Reflection</a>
+</div>
+</main>
+<footer><div class="wrap"><span>Calder War Stories · Writer-director Jason A. Green</span><span>© 2026 Jason A. Green · All rights reserved · WGA registered</span></div></footer>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+ var t=b.getAttribute('data-copy'),o=document.getElementById('copied');
+ function ok(){if(o)o.textContent='Email address copied.';}
+ function fb(){var a=document.querySelector('.addr');if(a){var r=document.createRange();r.selectNodeContents(a);var s=getSelection();s.removeAllRanges();s.addRange(r);}if(o)o.textContent='Address selected. Press Ctrl+C to copy.';}
+ try{navigator.clipboard.writeText(t).then(ok,fb);}catch(e){fb();}
+});});
+</script></body>
+</html>
