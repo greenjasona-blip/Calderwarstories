@@ -463,7 +463,7 @@ tr.click:hover td{background:color-mix(in srgb,var(--wall) 55%,transparent)}
   .cday.has::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
 }
 /* uploads & reader */
-.nav.upl{margin-top:8px;color:var(--accent);font-weight:700}
+.nav.upl{margin-top:8px;color:var(--accent);font-weight:700}#railBackup{margin-top:0}
 .dropov{position:fixed;inset:10px;z-index:70;border:3px dashed var(--accent);border-radius:18px;background:color-mix(in srgb,var(--bg) 80%,transparent);display:grid;place-items:center;pointer-events:none}
 .dropov div{display:grid;gap:4px;text-align:center;background:var(--raise);padding:18px 28px;border-radius:14px;box-shadow:var(--shadow)}.dropov b{font:800 26px var(--f-disp);text-transform:uppercase}.dropov span{color:var(--mute)}
 .uplist{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:6px;max-height:40vh;overflow:auto}
@@ -502,6 +502,7 @@ tr.click:hover td{background:color-mix(in srgb,var(--wall) 55%,transparent)}
     <div class="brand" title="Writers Room · built by a working screenwriter"><i></i><b>Writers</b><span>Room · Demo</span></div>
     <div id="nav" style="display:grid;gap:2px"></div>
     <button class="nav upl" id="railUpload" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V9M7 14l5-5 5 5M4 3h16"/></svg><span>Upload</span></button>
+    <button class="nav upl" id="railBackup" type="button" title="Download one file with all your work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg><span>Back up everything</span></button>
     <div class="rail-foot"><span class="save" id="saveSt" data-s="saved">Saved on this device</span><span id="bkNote"></span><span class="help" id="railNote"></span></div>
   </nav>
   <main id="main"></main>
@@ -531,7 +532,7 @@ const EDITION_KIND='demo';
 
 'use strict';
 /* =================== utilities =================== */
-const VERSION='1.6';
+const VERSION='1.7';
 const FONT_URL='https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Caveat:wght@500;700&family=Courier+Prime:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap';
 const IS_STANDALONE=(()=>{try{return window.top===window.self}catch(e){return false}})();
 const $=(s,r=document)=>r.querySelector(s);
@@ -885,6 +886,7 @@ function applyTheme(){const t=S.settings.theme;if(t==='light'||t==='dark')docume
 const ACTIONS={
   newProject:()=>openDrawer('projects',{kind:'feature',stage:'Idea',target:110,pages:0,color:'#c8372d'},true),
   newDoc:()=>{go('docs',{});UI.doc=null;render();openTemplates()},
+  backupNow:()=>doBackup(),dismissBk:()=>{UI.bkDismissed=true;render()},
   loadExample:()=>{buildSample();ensureWorld();try{placeRooms(true)}catch(e){}save();render()},
   newPost:()=>openDrawer('posts',{date:today(),status:'Draft',platforms:['X','Instagram']},true),
   newEvent:()=>openDrawer('events',{date:today(),kind:'Deadline'},true),
@@ -947,6 +949,7 @@ RENDER.home=m=>{
   m.innerHTML=`<div class="view">
   <div class="vhead"><div><span class="eyebrow">${esc(fmtD(t,{weekday:'long',month:'long',day:'numeric',year:'numeric'}))}</span><h1>${first&&first!=='Your'?esc(first)+'’s desk':'Your desk'}</h1></div>
   <div class="row"><button class="btn acc" data-a="newProject">${ic('plus')}New project</button><button class="btn" data-a="upload">${ic('upload')}Upload</button><button class="btn" data-a="newDoc">${ic('docs')}New pitch doc</button><button class="btn" data-a="newPost">${ic('social')}Plan a post</button><button class="btn" data-a="metSomeone">${ic('portfolio')}Met someone</button></div></div>
+  ${S.projects.length&&EDITION!=='demo'&&backupDue()&&!UI.bkDismissed?`<div class="banner" role="status"><span><b>${S.settings.lastBackup?'Time for a backup.':'Back up your work.'}</b> <span class="mute">${S.settings.lastBackup?'Your last backup was '+esc(fmtD(S.settings.lastBackup.slice(0,10)))+'. ':''}Your work lives in this browser on this device. One click saves everything to a single file you can keep anywhere.</span></span><span class="row"><button class="btn sm acc" data-a="backupNow">Back up everything</button><button class="btn sm ghost" data-a="dismissBk">Remind me later</button></span></div>`:''}
   ${!S.projects.length?`<div class="banner"><span><b>Welcome to your studio.</b> <span class="mute">Start a project, upload a script you already have, or look around with an example.</span></span><span class="row"><button class="btn sm acc" data-a="newProject">New project</button><button class="btn sm" data-a="upload">Upload a script</button><button class="btn sm ghost" data-a="loadExample">See an example</button></span></div>`:''}
   ${S.sample?`<div class="banner"><span><b>You’re looking at sample data.</b> <span class="mute">Explore freely; every example is marked. Clear it when you’re ready to start.</span></span><span class="row"><button class="btn sm" data-a="dismissSample">Keep examples</button><button class="btn sm acc" data-a="clearSample">Clear sample</button></span></div>`:''}
   <div class="home-grid">
@@ -2216,7 +2219,7 @@ function filesPanel(pid){const fs=filesFor(pid);
 
 function initUploads(){
   ACTIONS.upload=()=>openUpload();
-  const rb=$('#railUpload');if(rb)rb.onclick=()=>openUpload();
+  const rb=$('#railUpload');if(rb)rb.onclick=()=>openUpload();const bb=$('#railBackup');if(bb)bb.onclick=()=>doBackup();
   document.addEventListener('click',e=>{const r=e.target.closest('[data-readf]');if(r){e.preventDefault();openReader(r.dataset.readf)}});
   let depth=0;const ov=$('#dropOv');const hasFiles=e=>[...(e.dataTransfer?.types||[])].includes('Files');
   window.addEventListener('dragenter',e=>{if(!hasFiles(e))return;depth++;if(ov)ov.hidden=false});
@@ -2604,8 +2607,8 @@ RENDER.settings=m=>{const st=S.settings;const size=new Blob([JSON.stringify(S)])
     <label class="chk" style="border:0;padding:0"><input type="checkbox" data-st="wheelZoom"${st.wheelZoom?' checked':''}>Mouse wheel zooms the wall (otherwise it pans; Ctrl + wheel zooms)</label>
     <label class="chk" style="border:0;padding:0"><input type="checkbox" data-st="semantic"${st.semantic?' checked':''}>Zoom through levels: zooming deep into a card opens it, zooming far out goes up a level</label>
     <label class="chk" style="border:0;padding:0"><input type="checkbox" data-st="snap"${st.snap?' checked':''}>Snap cards to an 8px grid</label></section>
-  <section class="panel stack"><h2>Your data</h2><p class="help">${Cloud.on?`Synced to your private studio on claude.ai (only you can read it), so every computer and phone that opens your studio link sees the same data. A copy is also kept in this browser (${(size/1024/1024).toFixed(2)} MB).`:`Saved in this browser on this device (${(size/1024/1024).toFixed(2)} MB). ${CLOUD_URL?`To have the same data on every device, open your studio link: <a href="${CLOUD_URL}" target="_blank" rel="noopener">claude.ai studio</a>.`:'Move work between devices with a backup file.'}`} Back up now and then.</p>${Cloud.on?`<div class="row"><button class="btn" id="sSync">Sync now</button><span class="help">${esc($('#saveSt')?.textContent||'')}</span></div>`:''}
-    <div class="row"><button class="btn pri" id="sBackup">${ic('download')}${IS_STANDALONE?'Download':'Copy'} backup</button><button class="btn" id="sRestore">${ic('upload')}Restore from file</button><button class="btn" id="sPaste">Restore from pasted text</button></div>
+  <section class="panel stack"><h2>Your data</h2><p class="help">${Cloud.on?`Synced to your private studio on claude.ai (only you can read it), so every computer and phone that opens your studio link sees the same data. A copy is also kept in this browser (${(size/1024/1024).toFixed(2)} MB).`:`Saved in this browser on this device (${(size/1024/1024).toFixed(2)} MB). ${CLOUD_URL?`To have the same data on every device, open your studio link: <a href="${CLOUD_URL}" target="_blank" rel="noopener">claude.ai studio</a>.`:'Move work between devices with a backup file.'}`} Clearing this browser’s site data, or losing this computer, erases it, so back up now and then (we’ll remind you after 7 days). A backup is one .json file with all of your projects, story walls, documents, uploads, calendar and settings. Restore it on any computer to pick up where you left off.</p>${Cloud.on?`<div class="row"><button class="btn" id="sSync">Sync now</button><span class="help">${esc($('#saveSt')?.textContent||'')}</span></div>`:''}
+    <div class="row"><button class="btn pri" id="sBackup">${ic('download')}${IS_STANDALONE?'Back up everything (download)':'Back up everything (copy)'}</button><button class="btn" id="sRestore">${ic('upload')}Restore from backup file</button><button class="btn" id="sPaste">Restore from pasted text</button></div>
     ${EDITION==='personal'?`<div class="ibox"><span class="eyebrow">Personal edition</span><p class="help">Reload your slate, resume, platforms and tracker exactly as built into this app. This replaces what's saved on this device, so download a backup first if you've made changes here.</p><div><button class="btn acc" id="sReseed">Reload my data</button></div></div>`:EDITION==='demo'?`<div class="ibox"><span class="eyebrow">Demo edition</span><p class="help">Everyone and everything in this studio is fictional. After a demo, reset it to the original slate.</p><div><button class="btn acc" id="sReseed">Reset demo</button></div></div>`:EDITION==='blank'?`<div class="ibox"><span class="eyebrow">Start over</span><p class="help">Empty the studio and start from a blank wall. Download a backup first.</p><div><button class="btn danger" id="sReseed">Start fresh</button></div></div>`:''}
     <div class="row"><button class="btn" id="sSample">Load sample projects</button><button class="btn danger" id="sErase">${ic('trash')}Erase everything</button></div></section>
   <section class="panel stack"><h2>Version history</h2><p class="help">A full copy of your studio is kept automatically every 15 minutes while you work, at the start of each session, and before any restore. The last 12 are kept on this device.</p><div id="snapList" class="stack"><p class="help">Loading…</p></div><div class="row"><button class="btn" id="snapNow">Save a version now</button><button class="btn" id="hcRun">Run health check</button></div><div id="quotaBox"></div></section>
