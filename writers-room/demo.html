@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
 </head>
-<body><div id="demoBanner" style="position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:99999;background:#1c1d21;color:#fff;font:600 13px system-ui,sans-serif;padding:8px 14px;border-radius:999px;box-shadow:0 4px 18px rgba(0,0,0,.3)">Demo: sample data, saved only in this browser. <a href="https://greenjason8.gumroad.com/l/ybqspw" target="_blank" rel="noopener" style="color:#efcd70">Get Writers Room ($59, early-bird $29)</a> <button onclick="this.parentNode.remove()" style="margin-left:8px;background:none;border:0;color:#aaa;cursor:pointer">✕</button></div>
-<title>Writers Room · Demo</title>
+<body>
+<title>Writers Room Â· Demo</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="All-in-one studio for screenwriters: infinite story wall, beat generators, storyboards, pitch documents, portfolio site, resume, social and calendar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -102,6 +102,16 @@ tr.click:hover td{background:color-mix(in srgb,var(--wall) 55%,transparent)}
 .nav:hover{background:var(--surface);color:var(--ink)}
 .nav[aria-current="page"]{background:var(--raise);color:var(--ink);box-shadow:var(--shadow)}
 .rail-foot{margin-top:auto;padding:12px 10px 4px;display:grid;gap:4px}
+.nav-sep{display:block;padding:12px 10px 3px;font:600 10.5px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.linkbtn{border:0;background:none;padding:0;color:var(--mute);font:500 11px var(--f-body);text-align:left;cursor:pointer;text-decoration:underline}
+.linkbtn:hover{color:var(--ink)}
+.banner.quiet{border-style:solid;border-color:var(--line);background:var(--raise)}
+.tour-ring{position:fixed;z-index:70;border:2px solid var(--accent);border-radius:10px;box-shadow:0 0 0 9999px rgba(10,10,14,.55);pointer-events:none;transition:all .2s}
+.tour-card{position:fixed;z-index:71;width:min(340px,calc(100vw - 32px));background:var(--raise);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+.tour-card h3{margin:4px 0 6px;font-size:18px}
+.tour-card p{margin:0 0 12px;font-size:14px;line-height:1.45;color:var(--mute)}
+.tour-card .row{justify-content:space-between}
+@media (prefers-reduced-motion:reduce){.tour-ring{transition:none}}
 .save{font:600 11px/1.2 var(--f-body);color:var(--mute);display:inline-flex;align-items:center;gap:6px}
 .save::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--faint)}
 .save[data-s="saved"]::before{background:var(--ok)}
@@ -447,7 +457,7 @@ tr.click:hover td{background:color-mix(in srgb,var(--wall) 55%,transparent)}
   #app{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;gap:8px}
   #rail{flex-direction:row;order:2;overflow-x:auto;gap:2px;min-height:0}
   #nav{display:flex!important;flex-direction:row;gap:2px}
-  .brand,.rail-foot{display:none}
+  .brand,.rail-foot,.nav-sep{display:none}
   .nav{flex-direction:column;gap:2px;font-size:10.5px;padding:6px 8px;width:auto;min-width:64px}
   .insp{position:absolute;left:0;right:0;bottom:0;width:auto;max-height:55%;border-left:0;border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(0,0,0,.2);z-index:8}
   .insp.closed{display:none}
@@ -462,6 +472,10 @@ tr.click:hover td{background:color-mix(in srgb,var(--wall) 55%,transparent)}
   .cev{display:none}
   .cday.has::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
 }
+/* demo banner */
+.demo-banner{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:65;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;max-width:calc(100% - 24px);background:#1c1d21;color:#fff;font:600 13px/1.3 var(--f-body);padding:8px 10px 8px 16px;border-radius:999px;box-shadow:0 4px 18px rgba(0,0,0,.3)}
+.demo-banner a{color:#efcd70}.demo-banner button{background:none;border:0;color:#aaa;cursor:pointer;font-size:14px;padding:2px 6px}
+@media (max-width:820px){.demo-banner{top:calc(env(safe-area-inset-top,0px) + 6px);bottom:auto;border-radius:12px;font-size:11.5px;padding:6px 8px 6px 12px}.demo-banner span{display:none}.demo-banner{flex-wrap:nowrap;gap:4px}.demo-banner a{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}}
 /* uploads & reader */
 .nav.upl{margin-top:8px;color:var(--accent);font-weight:700}#railBackup{margin-top:0}
 .dropov{position:fixed;inset:10px;z-index:70;border:3px dashed var(--accent);border-radius:18px;background:color-mix(in srgb,var(--bg) 80%,transparent);display:grid;place-items:center;pointer-events:none}
@@ -499,7 +513,7 @@ tr.click:hover td{background:color-mix(in srgb,var(--wall) 55%,transparent)}
 
 <div id="app">
   <nav id="rail" aria-label="Sections">
-    <div class="brand" title="Writers Room · built by a working screenwriter"><i></i><b>Writers</b><span>Room · Demo</span></div>
+    <div class="brand"><i></i><b>Writers</b><span>Room Â· Demo</span></div>
     <div id="nav" style="display:grid;gap:2px"></div>
     <button class="nav upl" id="railUpload" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V9M7 14l5-5 5 5M4 3h16"/></svg><span>Upload</span></button>
     <button class="nav upl" id="railBackup" type="button" title="Download one file with all your work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg><span>Back up everything</span></button>
@@ -532,7 +546,7 @@ const EDITION_KIND='demo';
 
 'use strict';
 /* =================== utilities =================== */
-const VERSION='1.7';
+const VERSION='1.8';
 const FONT_URL='https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Caveat:wght@500;700&family=Courier+Prime:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap';
 const IS_STANDALONE=(()=>{try{return window.top===window.self}catch(e){return false}})();
 const $=(s,r=document)=>r.querySelector(s);
@@ -561,6 +575,7 @@ const ICON={
  social:'M18 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM18 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8.6 13.5l6.8 4M15.4 6.5l-6.8 4',
  calendar:'M3 5h18v16H3zM3 10h18M8 3v4M16 3v4',
  business:'M3 7h18v13H3zM8 7V4h8v3M3 13h18',
+ submissions:'M4 6l8 6 8-6M4 6h16v12H4z',
  settings:'M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0M16 4v4M10 10v4M18 16v4',
  select:'M5 3l14 8-6 2-2 6z',
  hand:'M8 13V5a1.5 1.5 0 0 1 3 0v6M11 11V3.5a1.5 1.5 0 0 1 3 0V11M14 11V5a1.5 1.5 0 0 1 3 0v8a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-3l-2.5-4.5a1.5 1.5 0 0 1 2.5-1.5L8 13',
@@ -656,10 +671,23 @@ async function loadState(){await DB.open();let raw=await DB.get('state');if(!raw
 let saveT=0;
 function save(){clearTimeout(saveT);setSaveSt('saving','Saving…');saveT=setTimeout(async()=>{S.savedAt=Date.now();const json=JSON.stringify(S);let ok=await DB.set('state',json);
   if(!ok){try{localStorage.setItem(LS_KEY,json);ok=true}catch(e){}}
-  if(ok){UI.lastSaved=new Date();if(Date.now()-lastSnapAt>SNAP_EVERY)takeSnapshot('Auto',json)}else if(!UI.saveWarned){UI.saveWarned=true;openModal(`<h3>Your work isn’t saving</h3><p class="help">This browser refused to store the latest changes, usually because storage is full or blocked. Download a backup now so nothing is lost, then remove large images or free up space.</p><div class="row end"><button class="btn" data-close>Later</button><button class="btn pri" data-bk>Back up now</button></div>`,{click:e=>{if(e.target.closest('[data-close]'))closeModal();if(e.target.closest('[data-bk]')){closeModal();doBackup()}}})}setSaveSt(ok?'saved':'error',ok?'Saved '+(UI.lastSaved.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'}))+' on this device':'Not saved: storage blocked. Back up now');if(ok)Cloud.schedule()},400)}
+  if(ok){UI.lastSaved=new Date();if(Date.now()-lastSnapAt>SNAP_EVERY)takeSnapshot('Auto',json)}else if(!UI.saveWarned){UI.saveWarned=true;openModal(`<h3>Your work isn’t saving</h3><p class="help">This browser refused to store the latest changes, usually because storage is full or blocked. Download a backup now so nothing is lost, then remove large images or free up space.</p><div class="row end"><button class="btn" data-close>Later</button><button class="btn pri" data-bk>Back up now</button></div>`,{click:e=>{if(e.target.closest('[data-close]'))closeModal();if(e.target.closest('[data-bk]')){closeModal();doBackup()}}})}setSaveSt(ok?'saved':'error',ok?'Saved '+(UI.lastSaved.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'}))+' on this device':'Not saved: storage blocked. Back up now');if(ok){Cloud.schedule();liveSchedule()}},400)}
 function backupDue(){const l=S.settings.lastBackup;return !l||(Date.now()-new Date(l).getTime())>7*864e5}
+/* Live backup file (Chrome/Edge): the browser keeps a chosen .json on disk up to date, so a cleared browser, a renamed
+   app file or a dead computer can't take the work with it, especially when the file sits in Dropbox, OneDrive or iCloud. */
+const LIVE={handle:null,name:'',at:0,state:'off',timer:0};
+const liveSupported=()=>IS_STANDALONE&&typeof window.showSaveFilePicker==='function';
+async function liveInit(){if(!liveSupported())return;try{const h=await DB.get('liveBackupHandle');if(!h)return;LIVE.handle=h;LIVE.name=h.name;LIVE.state=(await h.queryPermission({mode:'readwrite'}))==='granted'?'on':'paused';renderBk()}catch(e){}}
+async function liveChoose(){try{const h=await window.showSaveFilePicker({suggestedName:APP_SLUG+'-live-backup.json',types:[{description:'Studio backup',accept:{'application/json':['.json']}}]});LIVE.handle=h;LIVE.name=h.name;LIVE.state='on';await DB.set('liveBackupHandle',h);await liveWrite();toast('Live backup is on: '+h.name)}catch(e){if(e&&e.name!=='AbortError')toast('Could not set up the backup file: '+e.message)}renderBk()}
+async function liveResume(){try{if(LIVE.handle&&(await LIVE.handle.requestPermission({mode:'readwrite'}))==='granted'){LIVE.state='on';await liveWrite();toast('Live backup reconnected')}}catch(e){toast('Could not reconnect the backup file. Choose it again in Settings.')}renderBk()}
+async function liveStop(){LIVE.handle=null;LIVE.name='';LIVE.state='off';await DB.set('liveBackupHandle','');renderBk()}
+async function liveWrite(){if(LIVE.state!=='on'||!LIVE.handle)return;try{const w=await LIVE.handle.createWritable();await w.write(JSON.stringify(S));await w.close();LIVE.at=Date.now();S.settings.lastBackup=new Date().toISOString();renderBk()}catch(e){console.error('live backup',e);LIVE.state='paused';renderBk();toast('Live backup paused. Reconnect it from the sidebar.')}}
+function liveSchedule(){if(LIVE.state!=='on'||LIVE.timer)return;LIVE.timer=setTimeout(()=>{LIVE.timer=0;liveWrite()},Math.max(5000,60000-(Date.now()-LIVE.at)))}
 function doBackup(){const json=JSON.stringify(S);try{const o=JSON.parse(json);validate(deep(o));if(o.projects.length!==S.projects.length)throw new Error('project count mismatch')}catch(e){toast('Backup failed its check ('+e.message+'). Nothing was exported.');return}exportFile(APP_SLUG+'-backup-'+today()+'.json',json,'application/json');S.settings.lastBackup=new Date().toISOString();save();renderBk()}
-function renderBk(){const el=$('#bkNote');if(!el)return;const l=S.settings.lastBackup;el.innerHTML=backupDue()?`<button class="bkwarn" id="bkNow">${l?'Last backup '+esc(fmtD(l.slice(0,10)))+'. Back up now':'No backup yet. Back up now'}</button>`:`<span class="help">Backed up ${esc(fmtD(l.slice(0,10)))}</span>`;const b=$('#bkNow');if(b)b.onclick=doBackup}
+function renderBk(){const el=$('#bkNote');if(!el)return;const l=S.settings.lastBackup;
+  if(LIVE.state==='paused'){el.innerHTML=`<button class="bkwarn" id="bkLive">Reconnect live backup</button>`;$('#bkLive').onclick=liveResume;return}
+  if(LIVE.state==='on'){el.innerHTML=`<span class="help">Live backup on${LIVE.at?' · '+esc(new Date(LIVE.at).toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'})):''}</span>`;return}
+  el.innerHTML=backupDue()?`<button class="bkwarn" id="bkNow">${l?'Last backup '+esc(fmtD(l.slice(0,10)))+'. Back up now':'No backup yet. Back up now'}</button>`:`<span class="help">Backed up ${esc(fmtD(l.slice(0,10)))}</span>`;const b=$('#bkNow');if(b)b.onclick=doBackup}
 function setSaveSt(s,t){const el=$('#saveSt');if(el){el.dataset.s=s;el.textContent=t}}
 
 /* =================== cloud sync (v1.5) ===================
@@ -783,7 +811,7 @@ const SCHEMA={
  accounts:{name:'account',fields:[['platform','Platform','select',{opts:()=>Object.keys(PLATFORMS)}],['handle','Handle','text',{req:1,ph:'@yourname'}],['url','Profile link','url'],['followers','Followers','number'],['goal','Follower goal','number'],['bio','Tailored bio for this platform','textarea',{rows:3}],['notes','Notes','text']]},
  posts:{name:'post',fields:[['date','Date','date',{req:1}],['time','Time','time'],['platforms','Platforms','multi',{opts:()=>Object.keys(PLATFORMS)}],['text','Post copy','textarea',{rows:5,req:1}],['status','Status','select',{opts:POST_ST}],['projectId','Project','select',{opts:()=>projOpts()}],['media','Media note','text',{ph:'Use page 1 of the one-pager as image'}]]},
  events:{name:'event',fields:[['title','Title','text',{req:1}],['date','Date','date',{req:1}],['time','Time','time'],['kind','Kind','select',{opts:()=>Object.keys(EV_KINDS)}],['where','Where','text'],['projectId','Project','select',{opts:()=>projOpts()}],['notes','Notes','textarea',{rows:2}]]},
- submissions:{name:'submission',fields:[['target','Contest, company or person','text',{req:1}],['kind','Kind','select',{opts:SUB_KINDS}],['projectId','Project','select',{opts:()=>projOpts()}],['due','Deadline','date'],['sent','Date sent','date'],['fee','Fee','number',{step:'0.01'}],['entries','Total entries (if published)','number'],['slots','Slots / selections','number'],['status','Status','select',{opts:SUB_ST}],['notes','Notes','textarea',{rows:2}]]},
+ submissions:{name:'submission',fields:[['target','Contest, company or person','text',{req:1}],['kind','Kind','select',{opts:SUB_KINDS}],['projectId','Project','select',{opts:()=>projOpts()}],['due','Deadline','date'],['sent','Date sent','date'],['fee','Fee','number',{step:'0.01'}],['entries','Total entries (if published)','number'],['slots','Slots / selections','number'],['status','Status','select',{opts:SUB_ST}],['followUp','Follow up on','date'],['notes','Notes','textarea',{rows:2}]]},
  contacts:{name:'contact',fields:[['name','Name','text',{req:1}],['role','Role','text',{ph:'Manager, producer, exec…'}],['company','Company','text'],['email','Email','email'],['phone','Phone','text'],['metAt','Where you met','text',{ph:'AFF 2026, panel Q&A…'}],['hook','What you talked about','text',{ph:'Their slate, a shared reference, the ask'}],['last','Last contact','date'],['next','Follow up on','date'],['notes','Notes','textarea',{rows:3}]]},
  expenses:{name:'expense',fields:[['date','Date','date',{req:1}],['amount','Amount','number',{req:1,step:'0.01'}],['category','Category','select',{opts:EXP_CATS}],['desc','Description','text'],['projectId','Project','select',{opts:()=>projOpts()}]]},
  profile:{name:'profile',single:true,fields:[['name','Name','text'],['title','Title','text',{ph:'Screenwriter, writer-director…'}],['tagline','One-line tagline','text'],['bio','Bio','textarea',{rows:5}],['shortBio','Short bio (social)','textarea',{rows:2}],['headshot','Headshot','image'],['location','Location','text'],['email','Email','email'],['phone','Phone','text'],['website','Website','url'],['imdb','IMDb link','url'],['rep','Representation','text',{ph:'Management or agency'}],['repContact','Rep contact','text']]}
@@ -874,9 +902,13 @@ function readImage(file,max=1600){return new Promise((res,rej)=>{if(!file||!/^im
 function readText(file){return new Promise((res,rej)=>{const fr=new FileReader();fr.onload=()=>res(String(fr.result));fr.onerror=rej;fr.readAsText(file)})}
 
 /* =================== navigation =================== */
-const VIEWS=[['home','Home'],['board','Story Wall'],['docs','Pitch Docs'],['slate','Slate'],['portfolio','Portfolio & Site'],['resume','Resume'],['social','Social'],['calendar','Calendar'],['business','Business'],['settings','Settings']];
+/* Core sections first; the rest sit under "More" and can be hidden in Settings. */
+const VIEWS=[['home','Home'],['board','Story Wall'],['docs','Pitch Docs'],['slate','Slate'],['submissions','Submissions'],['portfolio','Portfolio & Site'],['resume','Resume'],['calendar','Calendar'],['business','Contacts & Expenses'],['social','Social'],['settings','Settings']];
+const OPTIONAL_VIEWS=['portfolio','resume','calendar','business','social'];
 const RENDER={};
-function renderRail(){$('#nav').innerHTML=VIEWS.map(([k,l])=>`<button class="nav" data-nav="${k}"${S.ui.view===k?' aria-current="page"':''}>${ic(k==='board'?'board':k)}<span>${l}</span></button>`).join('')}
+function renderRail(){const hid=S.settings.hiddenViews||[];const b=([k,l])=>`<button class="nav" data-nav="${k}"${S.ui.view===k?' aria-current="page"':''}>${ic(k==='board'?'board':k)}<span>${l}</span></button>`;
+  const shown=VIEWS.filter(([k])=>!hid.includes(k));const more=shown.filter(([k])=>OPTIONAL_VIEWS.includes(k));
+  $('#nav').innerHTML=shown.filter(([k])=>!OPTIONAL_VIEWS.includes(k)&&k!=='settings').map(b).join('')+(more.length?`<span class="nav-sep">More</span>`+more.map(b).join(''):'')+b(['settings','Settings'])}
 function go(view,opts){if(UI.editing)finishEdit();S.ui.view=view;if(opts)Object.assign(S.ui,opts);
   if(view!=='docs'){UI.blk=null}render();save();try{history.replaceState(null,'','#'+view)}catch(e){}}
 function render(){renderRail();const m=$('#main');m.onclick=null;m.oninput=null;m.onchange=null;m.onkeydown=null;try{(RENDER[S.ui.view]||RENDER.home)(m)}catch(e){console.error(e);try{window.__renderError=String(e&&e.stack||e)}catch(x){}if(S.ui.view!=='settings'){S.ui.view='home';try{RENDER.home(m);toast('That view hit an error, so you’re back on Home. Your data is safe.');return}catch(e2){}}recoveryScreen(e)}}
@@ -886,8 +918,10 @@ function applyTheme(){const t=S.settings.theme;if(t==='light'||t==='dark')docume
 const ACTIONS={
   newProject:()=>openDrawer('projects',{kind:'feature',stage:'Idea',target:110,pages:0,color:'#c8372d'},true),
   newDoc:()=>{go('docs',{});UI.doc=null;render();openTemplates()},
-  backupNow:()=>doBackup(),dismissBk:()=>{UI.bkDismissed=true;render()},
   loadExample:()=>{buildSample();ensureWorld();try{placeRooms(true)}catch(e){}save();render()},
+  backupNow:()=>doBackup(),dismissBk:()=>{UI.bkDismissed=true;render()},
+  restoreBackup:()=>pickFile('.json,application/json',fs=>confirmRestore(fs[0])),
+  startTour:()=>startTour(),
   newPost:()=>openDrawer('posts',{date:today(),status:'Draft',platforms:['X','Instagram']},true),
   newEvent:()=>openDrawer('events',{date:today(),kind:'Deadline'},true),
   newSub:()=>openDrawer('submissions',{status:'Planned',kind:'Contest'},true),
@@ -897,7 +931,7 @@ const ACTIONS={
     if(k==='wall'){S.ui.project=p.id;S.ui.board=p.root;UI.sel.clear();UI.outline=false;go('board');return}
     if(k==='docs'){if(S.docs.some(d=>d.projectId===p.id)){UI.docFilter=p.id;UI.doc=null;go('docs');return}const d=createDoc('onepager',p.id);UI.doc=d.id;UI.page=d.pages[0].id;go('docs');toast('One-pager started from '+p.title+'’s project fields');return}
     if(k==='site'){if(!S.site.featured.includes(p.id)){S.site.featured=[...S.site.featured,p.id];save();toast(p.title+' added to your site')}go('portfolio');return}
-    if(k==='subs'){UI.bizTab='submissions';go('business');if(!S.submissions.some(x=>x.projectId===p.id))openDrawer('submissions',{status:'Planned',kind:'Contest',projectId:p.id},true)}},
+    if(k==='subs'){UI.subProj=p.id;go('submissions');if(!S.submissions.some(x=>x.projectId===p.id))openDrawer('submissions',{status:'Planned',kind:'Contest',projectId:p.id},true)}},
   togglePass:a=>{const p=projById(a.dataset.pid);if(!p)return;p.passes=p.passes||{};const k=a.dataset.pass;p.passes[k]=!p.passes[k];save();render()},
   newExpense:()=>openDrawer('expenses',{date:today(),category:EXP_CATS[0]},true),
   newResume:()=>openDrawer('resume',{section:'Awards & placements'},true),
@@ -933,7 +967,7 @@ function projStats(p){let cards=0,frames=0,notes=0,boards=0;for(const id in S.bo
 /* =================== agenda =================== */
 function agenda(from,to){const out=[];const inR=d=>d&&d>=from&&d<=to;
   S.events.forEach(e=>{if(inR(e.date))out.push({date:e.date,time:e.time||'',title:e.title,kind:e.kind||'Deadline',ref:'events:'+e.id})});
-  S.submissions.forEach(s=>{if(inR(s.due)&&!['Passed','Winner'].includes(s.status))out.push({date:s.due,time:'',title:'Due: '+s.target,kind:'Submission',ref:'submissions:'+s.id})});
+  S.submissions.forEach(s=>{if(inR(s.due)&&!['Passed','Winner'].includes(s.status))out.push({date:s.due,time:'',title:'Due: '+s.target,kind:'Submission',ref:'submissions:'+s.id});if(inR(s.followUp)&&!['Passed','Withdrawn'].includes(s.status))out.push({date:s.followUp,time:'',title:'Follow up: '+s.target,kind:'Submission',ref:'submissions:'+s.id})});
   S.projects.forEach(p=>{if(inR(p.due))out.push({date:p.due,time:'',title:p.title+' due',kind:'Project due',ref:'projects:'+p.id})});
   S.posts.forEach(p=>{if(inR(p.date)&&p.status!=='Posted')out.push({date:p.date,time:p.time||'',title:'Post: '+(p.text||'').slice(0,48),kind:'Post',ref:'posts:'+p.id})});
   S.contacts.forEach(c=>{if(inR(c.next))out.push({date:c.next,time:'',title:'Follow up: '+c.name,kind:'Meeting',ref:'contacts:'+c.id})});
@@ -949,15 +983,15 @@ RENDER.home=m=>{
   m.innerHTML=`<div class="view">
   <div class="vhead"><div><span class="eyebrow">${esc(fmtD(t,{weekday:'long',month:'long',day:'numeric',year:'numeric'}))}</span><h1>${first&&first!=='Your'?esc(first)+'’s desk':'Your desk'}</h1></div>
   <div class="row"><button class="btn acc" data-a="newProject">${ic('plus')}New project</button><button class="btn" data-a="upload">${ic('upload')}Upload</button><button class="btn" data-a="newDoc">${ic('docs')}New pitch doc</button><button class="btn" data-a="newPost">${ic('social')}Plan a post</button><button class="btn" data-a="metSomeone">${ic('portfolio')}Met someone</button></div></div>
-  ${S.projects.length&&EDITION!=='demo'&&backupDue()&&!UI.bkDismissed?`<div class="banner" role="status"><span><b>${S.settings.lastBackup?'Time for a backup.':'Back up your work.'}</b> <span class="mute">${S.settings.lastBackup?'Your last backup was '+esc(fmtD(S.settings.lastBackup.slice(0,10)))+'. ':''}Your work lives in this browser on this device. One click saves everything to a single file you can keep anywhere.</span></span><span class="row"><button class="btn sm acc" data-a="backupNow">Back up everything</button><button class="btn sm ghost" data-a="dismissBk">Remind me later</button></span></div>`:''}
-  ${!S.projects.length?`<div class="banner"><span><b>Welcome to your studio.</b> <span class="mute">Start a project, upload a script you already have, or look around with an example.</span></span><span class="row"><button class="btn sm acc" data-a="newProject">New project</button><button class="btn sm" data-a="upload">Upload a script</button><button class="btn sm ghost" data-a="loadExample">See an example</button></span></div>`:''}
+  ${S.projects.length&&EDITION!=='demo'&&LIVE.state!=='on'&&backupDue()&&!UI.bkDismissed?`<div class="banner" role="status"><span><b>${S.settings.lastBackup?'Time for a backup.':'Back up your work.'}</b> <span class="mute">${S.settings.lastBackup?'Your last backup was '+esc(fmtD(S.settings.lastBackup.slice(0,10)))+'. ':''}Your work lives in this browser on this device. One click saves everything to a single file you can keep anywhere.</span></span><span class="row"><button class="btn sm acc" data-a="backupNow">Back up everything</button><button class="btn sm ghost" data-a="dismissBk">Remind me later</button></span></div>`:''}
+  ${!S.projects.length?`<div class="banner"><span><b>Welcome to your studio.</b> <span class="mute">Start a project, upload a script you already have, or look around with an example.</span></span><span class="row"><button class="btn sm acc" data-a="newProject">New project</button><button class="btn sm" data-a="upload">Upload a script</button><button class="btn sm ghost" data-a="loadExample">See an example</button></span></div><div class="banner quiet"><span><b>Had work here before?</b> <span class="mute">Your work lives in the browser, not in this file. If you switched computers or browsers, cleared browser data, or renamed or moved this file, the studio can start empty. Your backup brings it all back.</span></span><span class="row"><button class="btn sm" data-a="restoreBackup">${ic('upload')}Restore a backup</button></span></div>`:''}
   ${S.sample?`<div class="banner"><span><b>You’re looking at sample data.</b> <span class="mute">Explore freely; every example is marked. Clear it when you’re ready to start.</span></span><span class="row"><button class="btn sm" data-a="dismissSample">Keep examples</button><button class="btn sm acc" data-a="clearSample">Clear sample</button></span></div>`:''}
   <div class="home-grid">
     <section class="panel wide"><div class="phead"><h2>Projects</h2><button class="btn sm ghost" data-nav="slate">Open slate ${ic('right')}</button></div>
       ${S.projects.length?`<div class="proj-grid">${S.projects.map(projCard).join('')}</div>`:`<div class="empty">No projects yet. <button class="btn sm acc" data-a="newProject">Create your first project</button></div>`}</section>
     <section class="panel"><div class="phead"><h2>Coming up</h2><button class="btn sm ghost" data-nav="calendar">Calendar ${ic('right')}</button></div>
       ${up.length?`<ul class="agenda">${up.map(agendaLi).join('')}</ul>`:'<p class="empty">Nothing in the next 30 days. Add deadlines in Calendar or import an .ics file.</p>'}</section>
-    <section class="panel"><div class="phead"><h2>Submissions</h2><button class="btn sm ghost" data-nav="business">Tracker ${ic('right')}</button></div>
+    <section class="panel"><div class="phead"><h2>Submissions</h2><button class="btn sm ghost" data-nav="submissions">Tracker ${ic('right')}</button></div>
       <div class="kpis"><div class="kpi"><span class="eyebrow">Out now</span><b>${pend}</b></div><div class="kpi"><span class="eyebrow">Advanced</span><b>${adv}</b></div><div class="kpi"><span class="eyebrow">Fees this year</span><b style="font-size:22px">${money(subs.filter(s=>(s.sent||s.due||'').slice(0,4)===t.slice(0,4)).reduce((a,s)=>a+(+s.fee||0),0))}</b></div></div></section>
     ${(()=>{const fu=S.contacts.filter(c=>c.next&&c.next<=addDays(t,7)).sort((a,b)=>a.next.localeCompare(b.next));return fu.length?`<section class="panel"><div class="phead"><h2>Follow-ups</h2><button class="btn sm ghost" data-a="metSomeone">${ic('plus')}Met someone</button></div><ul class="agenda">${fu.slice(0,6).map(c=>`<li class="click" data-edit="contacts:${c.id}" style="cursor:pointer"><span class="d"${c.next<t?' style="color:var(--bad)"':''}>${esc(fmtD(c.next))}<small>${c.next<t?'overdue':c.next===t?'today':''}</small></span><span><b>${esc(c.name)}</b>${c.company?' · '+esc(c.company):''}<br><span class="help">${esc([c.metAt,c.hook].filter(Boolean).join(' — '))}</span></span></li>`).join('')}</ul></section>`:''})()}
     ${filesPanel('')}
@@ -1497,10 +1531,11 @@ function renumber(b){snap();const order=readingOrder(b.items);const cards=order.
 
 /* ---------- outline ---------- */
 function renderOutline(){const el=$('#outline');if(!el)return;const p=curProject();const root=S.boards[p.root];
-  el.innerHTML=`<div class="vhead" style="margin-bottom:8px"><div><span class="eyebrow">Outline · every level of ${esc(p.title)}</span><h1 style="font-size:34px">${esc(p.title)}</h1></div><div class="row"><button class="btn sm" id="olExpand">Expand all</button><button class="btn sm" id="olCollapse">Collapse all</button><button class="btn sm" id="olCopy">${ic('copy')}Copy as text</button></div></div>${p.logline?`<p class="help" style="max-width:70ch;margin-bottom:10px">${esc(p.logline)}</p>`:''}<div class="olb">${olBoard(root,0)}</div>`;
+  el.innerHTML=`<div class="vhead" style="margin-bottom:8px"><div><span class="eyebrow">Outline · every level of ${esc(p.title)}</span><h1 style="font-size:34px">${esc(p.title)}</h1></div><div class="row"><button class="btn sm" id="olExpand">Expand all</button><button class="btn sm" id="olCollapse">Collapse all</button><button class="btn sm" id="olCopy">${ic('copy')}Copy as text</button><button class="btn sm" id="olFountain">${ic('download')}Export Fountain</button></div></div>${p.logline?`<p class="help" style="max-width:70ch;margin-bottom:10px">${esc(p.logline)}</p>`:''}<div class="olb">${olBoard(root,0)}</div>`;
   $('#olExpand').onclick=()=>{UI.olClosed.clear();renderOutline()};
   $('#olCollapse').onclick=()=>{for(const id in S.boards){const b=S.boards[id];if(b.projectId===p.id)b.items.forEach(i=>i.child&&UI.olClosed.add(i.id))}renderOutline()};
   $('#olCopy').onclick=()=>copyText(outlineText(root,0),'Outline copied');
+  $('#olFountain').onclick=()=>exportFile(fileSlug(p.title)+'-outline.fountain',outlineFountain(p),'text/plain');
   el.onclick=e=>{const t=e.target.closest('[data-olt]');if(t){const id=t.dataset.olt;UI.olClosed.has(id)?UI.olClosed.delete(id):UI.olClosed.add(id);renderOutline();return}
     const g=e.target.closest('[data-goto]');if(g){const [bid,iid]=g.dataset.goto.split(':');S.ui.project=S.boards[bid].projectId;locate(bid,iid)}};
   el.oninput=e=>{const t=e.target.closest('[data-oli]');if(!t)return;const [bid,iid]=t.dataset.oli.split(':');const it=S.boards[bid]?.items.find(i=>i.id===iid);if(it){it.title=t.value;save()}}}
@@ -1511,6 +1546,23 @@ function olBoard(b,depth){if(!b||depth>12)return '';const order=readingOrder(b.i
     out+=`<div class="olr"><button class="tg" data-olt="${it.id}" ${has?'':'disabled style="visibility:hidden"'} aria-label="${open?'Collapse':'Expand'}">${open?'▾':'▸'}</button><span class="n">${esc(it.num||'')}</span><div><input data-oli="${b.id}:${it.id}" value="${esc(it.title)}" placeholder="${it.type==='note'?'Post-it':'Untitled'}" aria-label="Title">${it.body?`<div class="ex">${esc(it.body.slice(0,240))}</div>`:''}${it.type==='frame'&&it.shot?`<div class="ex">${esc([it.shot.size,it.shot.angle!=='Eye level'?it.shot.angle:'',it.shot.move!=='Static'?it.shot.move:''].filter(Boolean).join(' · '))}${it.dialogue?' — “'+esc(it.dialogue)+'”':''}</div>`:''}</div><span class="row" style="gap:6px">${it.status?`<span class="pill" style="--pc:${ST_C[it.status]}">${esc(it.status)}</span>`:''}${it.type!=='card'?`<span class="chip">${it.type==='note'?'Post-it':'Frame'}</span>`:''}<button class="btn sm ghost" data-goto="${b.id}:${it.id}">Show</button></span></div>`;
     if(open)out+=`<div class="olkids"><div class="olkh">${esc(levelName(kid))}</div>${olBoard(kid,depth+1)}</div>`}return out}
 function outlineText(b,depth){if(!b||depth>12)return '';const ind='  '.repeat(depth);let s='';for(const it of readingOrder(b.items).filter(i=>['card','note','sticky','frame'].includes(i.type))){s+=`${ind}${it.num?it.num+'. ':'- '}${it.title||'Untitled'}\n`;if(it.body)s+=`${ind}  ${it.body.replace(/\n/g,' ')}\n`;if(it.child)s+=outlineText(S.boards[it.child],depth+1)}return s}
+/* Fountain opens in Highland, Slugline, Beat, Fade In and WriterDuet, and is plain text a writer can always read. */
+const fileSlug=s=>String(s||'untitled').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'untitled';
+const oneLine=s=>String(s||'').replace(/\s*\n+\s*/g,' ').trim();
+function outlineFountain(p){const who=S.profile&&S.profile.name||'';
+  let s=`Title: ${oneLine(p.title)||'Untitled'}\nCredit: Written by\nAuthor: ${oneLine(who)}\nDraft date: ${today()}\n\n`;
+  if(p.logline)s+=`= ${oneLine(p.logline)}\n\n`;
+  return (s+fountainBoard(S.boards[p.root],1)).replace(/\n{3,}/g,'\n\n').trimEnd()+'\n'}
+function fountainBoard(b,depth){if(!b||depth>12)return '';let s='',cur=-2;const secs=b.items.filter(i=>i.type==='section').sort((a,c)=>a.y-c.y||a.x-c.x);const lvl=Math.min(depth+(secs.length?1:0),6);
+  for(const it of readingOrder(b.items).filter(i=>['card','note','sticky','frame'].includes(i.type))){const si=secs.findIndex(x=>inside(it,x));
+    if(si!==cur){cur=si;if(si>=0)s+=`${'#'.repeat(depth)} ${oneLine(secs[si].title)||'Section'}\n\n`}
+    const t=oneLine(it.title),body=oneLine(it.body);
+    if(it.type==='note'||it.type==='sticky'){if(t||body)s+=`[[${[t,body].filter(Boolean).join(': ').replace(/\]\]/g,'] ]')}]]\n\n`}
+    else if(/^(INT|EXT|EST|I\/E)[. ]/i.test(t)){s+=`${t.toUpperCase()}\n\n`;if(body)s+=`= ${body}\n\n`}
+    else if(it.type==='frame'){s+=`[[Frame${t?' '+t:''}${it.shot&&it.shot.size?' · '+oneLine(it.shot.size):''}${body?': '+body.replace(/\]\]/g,'] ]'):''}]]\n\n`}
+    else{s+=`${'#'.repeat(lvl)} ${t||'Untitled'}\n\n`;if(body)s+=`= ${body}\n\n`}
+    if(it.child)s+=fountainBoard(S.boards[it.child],depth+1)}
+  return s}
 
 /* ---------- keyboard & paste ---------- */
 function boardKeys(e,mod){const k=e.key;
@@ -2193,12 +2245,23 @@ async function confirmRestore(file){let o;try{o=JSON.parse(await readText(file))
 function filesFor(pid){return S.files.filter(f=>!pid||f.projectId===pid)}
 function scriptHTML(f){let h='',pg=0;const cls={scene:'scene',action:'act',char:'chr',dia:'dia',paren:'par',trans:'trn',center:'ctr'};
   f.lines.forEach((l,i)=>{if(l[3]&&l[3]!==pg){pg=l[3];h+=`<div class="pb" id="pg-${pg}">${pg}.</div>`}h+=`<p class="${cls[l[0]]||'act'}${l[2]?' gap':''}"${l[0]==='scene'?` id="sc-${i}"`:''}>${esc(l[1])}</p>`});return h}
+/* Rebuilds Fountain from parsed lines. Forced markers keep elements from being re-read as something else. */
+function scriptToFountain(f){let s=`Title: ${oneLine(f.title||f.name)}\n`+(f.author?`Author: ${oneLine(f.author)}\n`:'')+'\n';let prev='';
+  for(const [t,x] of f.lines){const txt=String(x||'');
+    if(t==='scene')s+=`\n${/^(INT|EXT|EST|I\/E)[. ]/i.test(txt)?txt:'.'+txt}\n\n`;
+    else if(t==='char')s+=`\n${txt===txt.toUpperCase()?txt:'@'+txt}\n`;
+    else if(t==='paren'||t==='dia')s+=txt+'\n';
+    else if(t==='trans')s+=`\n> ${txt}\n\n`;
+    else if(t==='center')s+=`\n> ${txt} <\n\n`;
+    else s+=(prev==='dia'||prev==='paren'?'\n':'')+(/^[A-Z0-9 .,'!?-]+$/.test(txt)?'!':'')+txt+'\n\n';
+    prev=t}
+  return s.replace(/\n{3,}/g,'\n\n').trimEnd()+'\n'}
 function openReader(id){const f=S.files.find(x=>x.id===id);if(!f)return;const p=projById(f.projectId);const sc=f.kind==='script'?scenesOf(f):[];
   const head=f.kind==='script'?`Script · ${f.pages||'?'} pages · ${sc.length} scenes`:f.kind==='doc'?'Document':'File';
   openModal(`<div class="rd-head"><div><span class="eyebrow">${esc(head)}</span><h3>${esc(f.title||f.name)}</h3><span class="help">${esc(f.author?'by '+f.author+' · ':'')}${esc(f.name)} · ${fmtSize(f.size||0)} · uploaded ${esc(fmtD((f.added||'').slice(0,10)))}</span></div>
    <div class="row"><select class="inp" id="rdProj" style="width:auto" aria-label="Project"><option value="">No project</option>${S.projects.map(x=>`<option value="${x.id}"${x.id===f.projectId?' selected':''}>${esc(x.title)}</option>`).join('')}</select>
    ${f.kind==='script'?`<button class="btn sm" data-rd="wall">${ic('board')}Scenes to wall</button>`:''}${f.docId&&docOf(f.docId)?`<button class="btn sm" data-rd="doc">${ic('docs')}Open Pitch Doc</button>`:f.kind==='doc'&&f.paras&&f.paras.length?`<button class="btn sm" data-rd="mkdoc">${ic('docs')}Make Pitch Doc</button>`:''}
-   <button class="btn sm" data-rd="orig">${ic('download')}Original</button><button class="btn sm ghost danger" data-rd="del" aria-label="Remove file">${ic('trash')}</button><button class="btn sm pri" data-close>Close</button></div></div>
+   ${f.kind==='script'&&f.lines?`<button class="btn sm" data-rd="fountain">${ic('download')}Fountain</button>`:''}<button class="btn sm" data-rd="orig">${ic('download')}Original</button><button class="btn sm ghost danger" data-rd="del" aria-label="Remove file">${ic('trash')}</button><button class="btn sm pri" data-close>Close</button></div></div>
    ${f.kind==='script'?`<div class="rd-body">${sc.length?`<nav class="rd-sc" aria-label="Scenes">${sc.map((s,k)=>`<a href="#sc-${s.i}" data-jump="sc-${s.i}"><b>${k+1}</b>${esc(s.h)}<i>${s.pg?'p. '+s.pg:''}</i></a>`).join('')}</nav>`:''}<div class="sp">${scriptHTML(f)}</div></div>`
    :f.kind==='doc'?`<div class="rd-doc">${(f.paras||[]).map(([t,s])=>t==='p'?`<p>${esc(s)}</p>`:`<h4>${esc(s)}</h4>`).join('')||'<p class="help">No text in this file.</p>'}</div>`
    :`<p class="help">${esc(f.note||'Saved as a file.')} Use Original to open it.</p>`}`,
@@ -2206,6 +2269,7 @@ function openReader(id){const f=S.files.find(x=>x.id===id);if(!f)return;const p=
     const j=e.target.closest('[data-jump]');if(j){e.preventDefault();const t=document.getElementById(j.dataset.jump);t&&t.scrollIntoView({block:'start'});return}
     const a=e.target.closest('[data-rd]');if(!a)return;const k=a.dataset.rd;
     if(k==='wall'){scenesToWall(f);return}
+    if(k==='fountain'){exportFile(fileSlug(f.title||f.name)+'.fountain',scriptToFountain(f),'text/plain');return}
     if(k==='doc'){closeModal();UI.doc=f.docId;go('docs');return}
     if(k==='mkdoc'){f.docId=parasToDoc(f.title,f.paras,f.projectId).id;save();closeModal();UI.doc=f.docId;go('docs');return}
     if(k==='orig'){a.disabled=true;const u=await blobGet(f.id);a.disabled=false;if(!u){toast('The original is on the device that uploaded it');return}downloadURL(u,f.name);return}
@@ -2227,6 +2291,11 @@ function initUploads(){
   window.addEventListener('dragover',e=>{if(hasFiles(e))e.preventDefault()});
   window.addEventListener('drop',e=>{depth=0;if(ov)ov.hidden=true;if(!hasFiles(e)||e.defaultPrevented)return;e.preventDefault();const fs=[...e.dataTransfer.files];if(fs.length)openUpload(fs)})}
 
+/* Demo banner: points visitors to the live store. */
+const DEMO_BUY='https://greenjason8.gumroad.com/l/ybqspw';
+(()=>{if(EDITION!=='demo')return;const b=document.createElement('div');b.id='demoBanner';b.className='demo-banner';
+  b.innerHTML=`<span>Demo: sample data, saved only in this browser.</span> <a href="${DEMO_BUY}" target="_blank" rel="noopener">Get Writers Room · $59, $29 with code EARLYBIRD</a><button type="button" aria-label="Hide banner">✕</button>`;
+  b.querySelector('button').onclick=()=>b.remove();document.body.appendChild(b)})();
 /* =================== DEMO SEED: a fictional writer with a full slate ===================
    Dana Kestrel and every project, festival, contact and handle here are invented for demos.
    Dates are relative to today so the calendar and follow-ups always look current. */
@@ -2583,19 +2652,21 @@ RENDER.calendar=m=>{const t=today();if(!UI.calMonth)UI.calMonth=t.slice(0,7);con
   m.onkeydown=e=>{const d=e.target.closest?.('[data-day]');if(d&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openDrawer('events',{date:d.dataset.day,kind:'Deadline'},true)}}};
 
 /* =================== BUSINESS =================== */
-RENDER.business=m=>{const tab=UI.bizTab;const yr=today().slice(0,4);const P=id=>projById(id)?.title||'';
-  const tabs=[['submissions','Submissions'],['contacts','Contacts'],['expenses','Expenses']];let body='',kp='';
-  if(tab==='submissions'){const rows=[...S.submissions].sort((a,b)=>String(b.sent||b.due||'').localeCompare(String(a.sent||a.due||'')));const adv=S.submissions.filter(s=>SUB_WIN.includes(s.status)).length,sent=S.submissions.filter(s=>s.status!=='Planned').length;
-    kp=`<div class="kpis"><div class="kpi"><span class="eyebrow">Sent</span><b>${sent}</b></div><div class="kpi"><span class="eyebrow">Advanced</span><b>${adv}</b></div><div class="kpi"><span class="eyebrow">Hit rate</span><b>${sent?Math.round(adv/sent*100):0}%</b></div><div class="kpi"><span class="eyebrow">Fees ${yr}</span><b>${money(S.submissions.filter(s=>(s.sent||s.due||'').startsWith(yr)).reduce((a,s)=>a+(+s.fee||0),0))}</b></div></div>`;
-    body=`<table><thead><tr><th>Target</th><th>Kind</th><th>Project</th><th>Deadline</th><th>Sent</th><th class="num">Fee</th><th class="num">Odds</th><th>Status</th></tr></thead><tbody>${rows.map(s=>`<tr class="click" data-edit="submissions:${s.id}"><td><b>${esc(s.target)}</b></td><td>${esc(s.kind||'')}</td><td>${esc(P(s.projectId))}</td><td class="mono">${esc(fmtD(s.due))}</td><td class="mono">${esc(fmtD(s.sent))}</td><td class="num">${s.fee?money(s.fee):''}</td><td class="num mono" title="${s.entries&&s.slots?esc(nfmt(s.slots)+' of '+nfmt(s.entries)):''}">${s.entries&&s.slots?(s.slots/s.entries*100).toFixed(s.slots/s.entries<.01?2:1)+'%':''}</td><td><span class="pill" style="--pc:${s.status==='Passed'||s.status==='Withdrawn'?'var(--faint)':['Planned','Submitted','Pending'].includes(s.status)?'var(--warn)':'var(--ok)'}">${esc(s.status)}</span></td></tr>`).join('')}</tbody></table>${rows.length?'':'<p class="empty">Track contests, fellowships, queries and general meetings here. Deadlines appear on the calendar.</p>'}`}
+RENDER.submissions=m=>RENDER.business(m,true);
+RENDER.business=(m,subs)=>{const tab=subs?'submissions':(UI.bizTab==='expenses'?'expenses':'contacts');const yr=today().slice(0,4);const P=id=>projById(id)?.title||'';
+  const tabs=subs?[]:[['contacts','Contacts'],['expenses','Expenses']];let body='',kp='';
+  if(tab==='submissions'){const t0=today();if(UI.subProj&&!projById(UI.subProj))UI.subProj='';const all=S.submissions.filter(s=>!UI.subProj||s.projectId===UI.subProj);const rows=[...all].sort((a,b)=>String(b.sent||b.due||'').localeCompare(String(a.sent||a.due||'')));const adv=all.filter(s=>SUB_WIN.includes(s.status)).length,sent=all.filter(s=>s.status!=='Planned').length,out=all.filter(s=>['Submitted','Pending'].includes(s.status)).length,fu=all.filter(s=>s.followUp&&s.followUp<=t0&&!['Passed','Withdrawn'].includes(s.status)).length;
+    kp=`<div class="kpis"><div class="kpi"><span class="eyebrow">Sent</span><b>${sent}</b></div><div class="kpi"><span class="eyebrow">Out now</span><b>${out}</b></div><div class="kpi"><span class="eyebrow">Advanced</span><b>${adv}</b></div><div class="kpi"><span class="eyebrow">Hit rate</span><b>${sent?Math.round(adv/sent*100):0}%</b></div><div class="kpi"><span class="eyebrow">Follow-ups due</span><b${fu?' style="color:var(--accent)"':''}>${fu}</b></div><div class="kpi"><span class="eyebrow">Fees ${yr}</span><b>${money(all.filter(s=>(s.sent||s.due||'').startsWith(yr)).reduce((a,s)=>a+(+s.fee||0),0))}</b></div></div>`;
+    body=`<table><thead><tr><th>Target</th><th>Kind</th><th>Project</th><th>Deadline</th><th>Sent</th><th>Follow up</th><th class="num">Fee</th><th class="num">Odds</th><th>Status</th></tr></thead><tbody>${rows.map(s=>`<tr class="click" data-edit="submissions:${s.id}"><td><b>${esc(s.target)}</b></td><td>${esc(s.kind||'')}</td><td>${esc(P(s.projectId))}</td><td class="mono">${esc(fmtD(s.due))}</td><td class="mono">${esc(fmtD(s.sent))}</td><td class="mono"${s.followUp&&s.followUp<=t0&&!['Passed','Withdrawn'].includes(s.status)?' style="color:var(--bad)"':''}>${esc(fmtD(s.followUp))}</td><td class="num">${s.fee?money(s.fee):''}</td><td class="num mono" title="${s.entries&&s.slots?esc(nfmt(s.slots)+' of '+nfmt(s.entries)):''}">${s.entries&&s.slots?(s.slots/s.entries*100).toFixed(s.slots/s.entries<.01?2:1)+'%':''}</td><td><span class="pill" style="--pc:${s.status==='Passed'||s.status==='Withdrawn'?'var(--faint)':['Planned','Submitted','Pending'].includes(s.status)?'var(--warn)':'var(--ok)'}">${esc(s.status)}</span></td></tr>`).join('')}</tbody></table>${rows.length?'':`<p class="empty">${UI.subProj?'Nothing logged for this script yet.':'Who has which script, what came back, and when to follow up: contests, fellowships, queries and meetings. Deadlines and follow-ups appear on the calendar.'}</p>`}`}
   if(tab==='contacts'){const rows=[...S.contacts].sort((a,b)=>String(a.next||'9').localeCompare(String(b.next||'9')));
     body=`<table><thead><tr><th>Name</th><th>Role</th><th>Company</th><th>Met</th><th>Email</th><th>Last contact</th><th>Follow up</th></tr></thead><tbody>${rows.map(c=>`<tr class="click" data-edit="contacts:${c.id}"><td><b>${esc(c.name)}</b></td><td>${esc(c.role||'')}</td><td>${esc(c.company||'')}</td><td>${esc(c.metAt||'')}</td><td>${esc(c.email||'')}</td><td class="mono">${esc(fmtD(c.last))}</td><td class="mono"${c.next&&c.next<today()?' style="color:var(--bad)"':''}>${esc(fmtD(c.next))}</td></tr>`).join('')}</tbody></table>${rows.length?'':'<p class="empty">Managers, producers, execs, readers. Follow-up dates show on your calendar.</p>'}`}
   if(tab==='expenses'){const rows=[...S.expenses].sort((a,b)=>String(b.date).localeCompare(String(a.date)));const yrRows=S.expenses.filter(x=>String(x.date).startsWith(yr));const byCat={};yrRows.forEach(x=>byCat[x.category]=(byCat[x.category]||0)+(+x.amount||0));
     kp=`<div class="kpis"><div class="kpi"><span class="eyebrow">Tracked ${yr}</span><b>${money(yrRows.reduce((a,x)=>a+(+x.amount||0),0))}</b></div>${Object.entries(byCat).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([c,v])=>`<div class="kpi"><span class="eyebrow">${esc(c)}</span><b style="font-size:22px">${money(v)}</b></div>`).join('')}</div>`;
     body=`<table><thead><tr><th>Date</th><th class="num">Amount</th><th>Category</th><th>Description</th><th>Project</th></tr></thead><tbody>${rows.map(x=>`<tr class="click" data-edit="expenses:${x.id}"><td class="mono">${esc(fmtD(x.date,{month:'short',day:'numeric',year:'numeric'}))}</td><td class="num">${money(x.amount)}</td><td>${esc(x.category||'')}</td><td>${esc(x.desc||'')}</td><td>${esc(P(x.projectId))}</td></tr>`).join('')}</tbody></table>${rows.length?'':'<p class="empty">Software, contest fees, research, courses, festival travel. A record for your accountant.</p>'}<p class="help" style="margin-top:10px">A tracker, not tax advice. Keep receipts and confirm deductions with a tax professional.</p>`}
   const add={submissions:'newSub',contacts:'newContact',expenses:'newExpense'}[tab];
-  m.innerHTML=`<div class="view"><div class="vhead"><div><span class="eyebrow">The business of writing</span><h1>Business</h1></div><div class="row"><div class="seg">${tabs.map(([k,n])=>`<button class="btn sm" data-bt="${k}" aria-pressed="${tab===k}">${n}</button>`).join('')}</div><button class="btn" id="bzCsv">${ic('copy')}Copy as CSV</button><button class="btn acc" data-a="${add}">${ic('plus')}Add</button></div></div>${kp?kp+'<div style="height:16px"></div>':''}<section class="panel"><div class="tw">${body}</div></section></div>`;
+  m.innerHTML=`<div class="view"><div class="vhead"><div><span class="eyebrow">${subs?'Who has which script, and what came back':'The business of writing'}</span><h1>${subs?'Submissions':'Contacts & Expenses'}</h1></div><div class="row">${subs?`<select class="inp" id="subProj" style="width:auto" aria-label="Filter by script"><option value="">All scripts</option>${S.projects.map(p=>`<option value="${p.id}"${p.id===UI.subProj?' selected':''}>${esc(p.title)}</option>`).join('')}</select>`:`<div class="seg">${tabs.map(([k,n])=>`<button class="btn sm" data-bt="${k}" aria-pressed="${tab===k}">${n}</button>`).join('')}</div>`}<button class="btn" id="bzCsv">${ic('copy')}Copy as CSV</button><button class="btn acc" data-a="${add}">${ic('plus')}Add</button></div></div>${kp?kp+'<div style="height:16px"></div>':''}<section class="panel"><div class="tw">${body}</div></section></div>`;
   m.onclick=e=>{const b=e.target.closest('[data-bt]');if(b){UI.bizTab=b.dataset.bt;render()}};
+  const sp=$('#subProj');if(sp)sp.onchange=e=>{UI.subProj=e.target.value;render()};
   $('#bzCsv').onclick=()=>{const cols=SCHEMA[tab].fields.map(f=>f[0]);const q=v=>`"${String(v??'').replace(/"/g,'""')}"`;copyText([cols.join(','),...S[tab].map(r=>cols.map(c=>q(c==='projectId'?P(r[c]):r[c])).join(','))].join('\n'),'CSV copied. Paste into Sheets or Excel')}};
 
 /* =================== SETTINGS =================== */
@@ -2606,8 +2677,12 @@ RENDER.settings=m=>{const st=S.settings;const size=new Blob([JSON.stringify(S)])
     <div class="field"><span class="lab">Appearance</span><div class="seg">${[['system','System'],['light','Light'],['dark','Dark']].map(([k,n])=>`<button class="btn sm" data-th="${k}" aria-pressed="${st.theme===k}">${n}</button>`).join('')}</div></div>
     <label class="chk" style="border:0;padding:0"><input type="checkbox" data-st="wheelZoom"${st.wheelZoom?' checked':''}>Mouse wheel zooms the wall (otherwise it pans; Ctrl + wheel zooms)</label>
     <label class="chk" style="border:0;padding:0"><input type="checkbox" data-st="semantic"${st.semantic?' checked':''}>Zoom through levels: zooming deep into a card opens it, zooming far out goes up a level</label>
-    <label class="chk" style="border:0;padding:0"><input type="checkbox" data-st="snap"${st.snap?' checked':''}>Snap cards to an 8px grid</label></section>
-  <section class="panel stack"><h2>Your data</h2><p class="help">${Cloud.on?`Synced to your private studio on claude.ai (only you can read it), so every computer and phone that opens your studio link sees the same data. A copy is also kept in this browser (${(size/1024/1024).toFixed(2)} MB).`:`Saved in this browser on this device (${(size/1024/1024).toFixed(2)} MB). ${CLOUD_URL?`To have the same data on every device, open your studio link: <a href="${CLOUD_URL}" target="_blank" rel="noopener">claude.ai studio</a>.`:'Move work between devices with a backup file.'}`} Clearing this browser’s site data, or losing this computer, erases it, so back up now and then (we’ll remind you after 7 days). A backup is one .json file with all of your projects, story walls, documents, uploads, calendar and settings. Restore it on any computer to pick up where you left off.</p>${Cloud.on?`<div class="row"><button class="btn" id="sSync">Sync now</button><span class="help">${esc($('#saveSt')?.textContent||'')}</span></div>`:''}
+    <label class="chk" style="border:0;padding:0"><input type="checkbox" data-st="snap"${st.snap?' checked':''}>Snap cards to an 8px grid</label>
+    <div><button class="btn" data-a="startTour">Take the quick tour</button></div></section>
+  <section class="panel stack"><h2>Show in sidebar</h2><p class="help">Only use part of this? Turn off what you don't need. Nothing is deleted, and you can turn a section back on any time.</p>${VIEWS.filter(([k])=>OPTIONAL_VIEWS.includes(k)).map(([k,l])=>`<label class="chk" style="border:0;padding:0"><input type="checkbox" data-hv="${k}"${(st.hiddenViews||[]).includes(k)?'':' checked'}>${esc(l)}</label>`).join('')}</section>
+  <section class="panel stack"><h2>Live backup file</h2>${liveSupported()?`<p class="help">Choose a file and the studio keeps it up to date while you work, at most once a minute. Put it in a Dropbox, OneDrive or iCloud folder and your work also survives a cleared browser or a dead computer.</p>${LIVE.state==='on'?`<p class="help"><b>On:</b> ${esc(LIVE.name)}</p><div class="row"><button class="btn" id="lvStop">Stop</button></div>`:LIVE.state==='paused'?`<p class="help"><b>Paused:</b> your browser needs permission again for ${esc(LIVE.name)}.</p><div class="row"><button class="btn pri" id="lvResume">Reconnect</button><button class="btn" id="lvStop">Stop</button></div>`:`<div class="row"><button class="btn pri" id="lvStart">Choose a backup file</button></div>`}`:`<p class="help">${IS_STANDALONE?'Automatic file backup needs Chrome or Edge on a computer. In this browser, use Download backup above, and the sidebar will remind you weekly.':'Automatic file backup is available when you open the downloaded app in Chrome or Edge on a computer.'}</p>`}</section>
+  ${EDITION==='personal'?'':`<section class="panel stack"><h2>Updates</h2><p class="help">You're on version ${VERSION}. All 1.x updates are free.</p><ol class="help" style="margin:0;padding-left:18px"><li>Back up first (Your data, on this page).</li><li>Download the new file using the link in your purchase email.</li><li>Replace the old file, keeping the same name and folder, and open it in the same browser.</li></ol><p class="help">Your work lives in this browser, not in the file. Some browsers treat a renamed or moved file as a new app, so it may open empty. If that happens, nothing is lost: put the file back where it was, or use Restore from file.</p></section>`}
+  <section class="panel stack"><h2>Your data</h2><p class="help">${Cloud.on?`Synced to your private studio on claude.ai (only you can read it), so every computer and phone that opens your studio link sees the same data. A copy is also kept in this browser (${(size/1024/1024).toFixed(2)} MB).`:`Saved in this browser on this device (${(size/1024/1024).toFixed(2)} MB). ${CLOUD_URL?`To have the same data on every device, open your studio link: <a href="${CLOUD_URL}" target="_blank" rel="noopener">claude.ai studio</a>.`:'Move work between devices with a backup file.'}`} Back up now and then.</p>${Cloud.on?`<div class="row"><button class="btn" id="sSync">Sync now</button><span class="help">${esc($('#saveSt')?.textContent||'')}</span></div>`:''}
     <div class="row"><button class="btn pri" id="sBackup">${ic('download')}${IS_STANDALONE?'Back up everything (download)':'Back up everything (copy)'}</button><button class="btn" id="sRestore">${ic('upload')}Restore from backup file</button><button class="btn" id="sPaste">Restore from pasted text</button></div>
     ${EDITION==='personal'?`<div class="ibox"><span class="eyebrow">Personal edition</span><p class="help">Reload your slate, resume, platforms and tracker exactly as built into this app. This replaces what's saved on this device, so download a backup first if you've made changes here.</p><div><button class="btn acc" id="sReseed">Reload my data</button></div></div>`:EDITION==='demo'?`<div class="ibox"><span class="eyebrow">Demo edition</span><p class="help">Everyone and everything in this studio is fictional. After a demo, reset it to the original slate.</p><div><button class="btn acc" id="sReseed">Reset demo</button></div></div>`:EDITION==='blank'?`<div class="ibox"><span class="eyebrow">Start over</span><p class="help">Empty the studio and start from a blank wall. Download a backup first.</p><div><button class="btn danger" id="sReseed">Start fresh</button></div></div>`:''}
     <div class="row"><button class="btn" id="sSample">Load sample projects</button><button class="btn danger" id="sErase">${ic('trash')}Erase everything</button></div></section>
@@ -2615,8 +2690,10 @@ RENDER.settings=m=>{const st=S.settings;const size=new Blob([JSON.stringify(S)])
   <section class="panel stack"><h2>Profile</h2><p class="help">Your name, bio, headshot and contact details feed every document, your website, resume and social bios.</p><div><button class="btn" data-a="editProfile">${ic('pencil')}Edit profile</button></div></section>
   <section class="panel stack"><h2>What’s inside</h2><p class="help">Story Wall with nested boards (beats → scenes → shots), 10 structure generators, scene and coverage generators, storyboard sketch pad, outline view, 16 pitch document templates with live fields, website and link-in-bio builder, resume, social planner with platform limits, calendar with .ics import and export, submissions, contacts and expenses.</p></section></div></div>`;
   m.onclick=async e=>{const th=e.target.closest('[data-th]');if(th){st.theme=th.dataset.th;applyTheme();save();render();return}};
-  m.onchange=e=>{const k=e.target.dataset.st;if(k){st[k]=e.target.checked;save();toast('Saved')}};
+  m.onchange=e=>{const k=e.target.dataset.st;if(k){st[k]=e.target.checked;save();toast('Saved')}
+    const hv=e.target.dataset.hv;if(hv){const h=new Set(st.hiddenViews||[]);e.target.checked?h.delete(hv):h.add(hv);st.hiddenViews=[...h];save();renderRail()}};
   $('#sBackup').onclick=doBackup;
+  [['lvStart',liveChoose],['lvResume',liveResume],['lvStop',liveStop]].forEach(([id,fn])=>{const b=$('#'+id);if(b)b.onclick=async()=>{await fn();render()}});
   const sy=$('#sSync');if(sy)sy.onclick=async()=>{const s=await Cloud.db.doc('sync/meta').get().catch(()=>null);const m=s&&s.exists?s.data():null;if(m&&m.rev!==Cloud.rev&&(m.at||0)>(S.savedAt||0))await Cloud.pull(m);else await Cloud.push();render()};
   const drawSnaps=async()=>{const el=$('#snapList');if(!el)return;const L=await snapList();el.innerHTML=L.length?`<div class="tw"><table><tbody>${L.map(x=>`<tr><td class="mono">${esc(new Date(x.at).toLocaleString(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}))}</td><td>${esc(x.reason)}</td><td class="num">${(x.size/1048576).toFixed(1)} MB</td><td class="num"><button class="btn sm" data-snap="${esc(x.id)}">Restore</button></td></tr>`).join('')}</tbody></table></div>`:'<p class="help">No versions yet.</p>';
     const q=await quota(),qb=$('#quotaBox');if(q&&qb&&q.total){const pct=q.used/q.total*100;qb.innerHTML=`<div class="meter" style="--mc:${pct>80?'var(--bad)':pct>60?'var(--warn)':'var(--ok)'}"><div class="bar"><i style="width:${Math.min(100,pct).toFixed(1)}%"></i></div><span>${(q.used/1048576).toFixed(0)} MB of ${(q.total/1048576).toFixed(0)} MB</span></div>${pct>80?'<p class="err">Browser storage is nearly full. Back up now and remove large images.</p>':''}`}};
@@ -2694,13 +2771,45 @@ async function boot(){$('#docCss').textContent=DOC_CSS;let s=await loadWithRecov
   if(typeof applyPatches==='function'&&applyPatches()){ensureWorld();save()}
   try{ensureWorld();if(placeRooms(false))save()}catch(e){console.error('rooms',e)}
   const h=(location.hash||'').slice(1);if(VIEWS.some(v=>v[0]===h))S.ui.view=h;
-  applyTheme();initDrawer();initGlobalClicks();initBoardGlobal();initKeys();initUploads();
-  $('#railNote').textContent=IS_STANDALONE?'':'Preview mode: exports copy to clipboard';
+  document.title=document.title.replace(/ v[0-9.]+$/,"")+" v"+VERSION;applyTheme();initDrawer();initGlobalClicks();initBoardGlobal();initKeys();initUploads();
+  $('#railNote').innerHTML=`${IS_STANDALONE?'':'Preview mode: exports copy to clipboard<br>'}v${VERSION} · <button class="linkbtn" data-a="startTour">Quick tour</button>`;
   window.addEventListener('resize',()=>{if(S.ui.view==='board'&&$('#vp'))applyCam()});
   try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
   renderBk();try{render()}catch(e){console.error(e);recoveryScreen(e)}
   takeSnapshot('Session start');
+  liveInit();
+  if(EDITION!=='personal'&&!S.settings.tourDone)setTimeout(startTour,500);
   Cloud.init().catch(e=>console.error('cloud init',e))}
+/* First-run tour. Points at the sidebar so it never has to change the writer's view; a target that isn't on screen just gets a centered card. */
+const TOUR=[
+  [null,'Welcome to your studio','One file, no account, and no subscription. Here are the five things worth knowing. It takes under a minute.'],
+  ['[data-nav="board"]','Story Wall','An endless whiteboard for every project. Add cards, Post-its, timelines and images, then zoom out to see it all or into a card to work inside it.'],
+  ['[data-nav="docs"]','Pitch Docs','Loglines, treatments, one-sheets and more. They fill in from what you have already written.'],
+  ['[data-nav="submissions"]','Submissions','Who has which script, what came back, and when to follow up. Dates land on your calendar.'],
+  ['[data-nav="settings"]','Only need part of it?','Hide any section under "More" from Settings. Nothing is deleted.'],
+  ['#bkNote','Keep a backup','Your work lives in this browser, on this device. Clearing browser data can erase it, so back up often from Settings. In Chrome or Edge, Settings can also keep a backup file updated for you.']];
+function startTour(){endTour();let i=0;const ring=document.createElement('div'),card=document.createElement('div');ring.className='tour-ring';card.className='tour-card';card.setAttribute('role','dialog');card.setAttribute('aria-modal','true');card.setAttribute('aria-labelledby','tourT');
+  document.body.append(ring,card);
+  const done=()=>{S.settings.tourDone=true;save();endTour()};
+  const key=e=>{if(e.key==='Escape'){e.stopPropagation();done()}};
+  const show=()=>{const [sel,title,text]=TOUR[i];const el=sel&&document.querySelector(sel);if(el)el.scrollIntoView({block:'nearest',inline:'nearest'});const r=el&&el.getBoundingClientRect();const has=r&&r.width>0&&r.height>0;const last=i===TOUR.length-1;
+    card.innerHTML=`<span class="eyebrow">${i+1} of ${TOUR.length}</span><h3 id="tourT">${esc(title)}</h3><p>${esc(text)}</p><div class="row"><button class="btn sm ghost" data-t="skip">${last?'Close':'Skip'}</button><span class="row">${i?'<button class="btn sm" data-t="back">Back</button>':''}<button class="btn sm pri" data-t="next">${last?'Done':'Next'}</button></span></div>`;
+    const W=innerWidth,H=innerHeight;
+    if(has){Object.assign(ring.style,{display:'block',left:r.left-4+'px',top:r.top-4+'px',width:r.width+8+'px',height:r.height+8+'px',boxShadow:''})}
+    else Object.assign(ring.style,{display:'block',left:W/2+'px',top:H/2+'px',width:'0',height:'0',border:'0'});
+    if(has)ring.style.border='';
+    const c=card.getBoundingClientRect();let x,y;
+    if(!has){x=(W-c.width)/2;y=(H-c.height)/2}
+    else if(r.right+16+c.width<=W-8){x=r.right+16;y=r.top}
+    else{x=(W-c.width)/2;y=r.top>c.height+24?r.top-c.height-16:r.bottom+16}
+    card.style.left=Math.max(8,x)+'px';card.style.top=Math.max(8,Math.min(y,H-c.height-8))+'px';
+    card.querySelector('[data-t="next"]').focus()};
+  card.onclick=e=>{const t=e.target.closest('[data-t]');if(!t)return;const k=t.dataset.t;if(k==='skip')return done();if(k==='back'){i--;return show()}if(i===TOUR.length-1)return done();i++;show()};
+  document.addEventListener('keydown',key,true);
+  window.addEventListener('resize',show);
+  endTour.fn=()=>{document.removeEventListener('keydown',key,true);window.removeEventListener('resize',show);ring.remove();card.remove()};
+  show()}
+function endTour(){if(endTour.fn){endTour.fn();endTour.fn=null}}
 boot();
 
 })();
